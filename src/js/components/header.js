@@ -7,7 +7,7 @@ import createNavMenuBtn from './navMenuBtn';
 
 const createHeader = () => {
   const headerElement = createElement('header');
-
+  headerElement.classList.add('header');
   // create header logo
   const headerLogo = createLogo('English for kids', '#home');
 

@@ -1,0 +1,29 @@
+.header-hamburger {
+  > span {
+    display: block;
+    width: 2.1125em;
+    height: 0.2125em;
+    border-radius: 0.6em;
+    background-color: $whiteColor;
+    transform-origin: 3px 1px;
+    transition: all 0.3s ease-in-out;
+
+    &:not(:last-child) {
+      margin-bottom: 0.4125em;
+    }
+  }
+
+  &:hover {
+    > span:first-child {
+      transform: translateX(0.1875rem);
+    }
+
+    > span:nth-child(2) {
+      transform: translateX(-0.1875rem);
+    }
+
+    > span:last-child {
+      transform: translateX(0.1875rem);
+    }
+  }
+}

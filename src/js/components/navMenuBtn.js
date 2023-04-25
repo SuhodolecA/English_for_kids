@@ -5,7 +5,6 @@ const createNavMenuBtn = () => {
   const navMenuBtn = createElement('a');
   navMenuBtn.classList.add('header-hamburger');
   navMenuBtn.href = '#';
-  navMenuBtn.textContent = 'Menu';
 
   const span1 = createElement('span');
   const span2 = createElement('span');
