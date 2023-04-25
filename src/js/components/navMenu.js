@@ -6,7 +6,7 @@ const createNavMenu = (data) => {
   navMenuUl.classList.add('header-menu');
 
   for (let i = 0; i < data.length; i += 1) {
-    navMenuUl.append(createNavMenuItem(data[i].section.toUpperCase()));
+    navMenuUl.append(createNavMenuItem(data[i].section));
   }
 
   return navMenuUl;

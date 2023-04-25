@@ -1,0 +1,14 @@
+@mixin insert-icons($path) {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url($path);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 1.5625rem;
+  height: 1.5625rem;
+}
