@@ -4,7 +4,44 @@
 @import '../components/statisticsBtn';
 
 .header {
-  padding: 1.875em;
-  border-bottom: 2px solid red;
-  //   box-shadow: 0 0 0 0.2em hsla(0, 0%, 0%, 0.3);
+  padding: 1.5em 1em;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    font-size: 0.9em;
+  }
+
+  &-logo__link {
+    color: $whiteColor;
+    font-size: 0.7em;
+    display: inline-block;
+    margin-top: 1em;
+    text-shadow: 2px 2px 5px $whiteColorShadow;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $whiteColorHover;
+    }
+
+    @media (min-width: 28.125rem) {
+      font-size: 0.9em;
+      margin-top: 0;
+    }
+
+    @media (min-width: 48rem) {
+      font-size: 1.2em;
+    }
+
+    @media (min-width: 62.5rem) {
+      font-size: 1.5em;
+    }
+  }
 }

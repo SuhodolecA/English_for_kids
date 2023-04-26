@@ -1,28 +1,28 @@
 .statistics-button {
   font-weight: 700;
-  text-transform: uppercase;
-  margin-left: 1em;
   letter-spacing: 0.1em;
   color: $whiteColor;
   background-color: $lightBlueColor;
   border: 0;
   border-radius: 0.8em;
-  padding: 0.7em 1.1em;
+  padding: 0.5em 0.7em;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
 
-  @media (max-width: 47.9375rem) {
-    font-size: 0.8em;
-    margin-left: 0;
-    margin-top: 1em;
-  }
-
-  @media (max-width: 31.25rem) {
-    font-size: 0.6em;
-    padding: 0.6em 0.9em;
-  }
-
   &:hover {
     background-color: $lightBlueColorHover;
+  }
+
+  @media (min-width: 28.125rem) {
+    font-size: 0.9em;
+    margin-top: 0;
+  }
+
+  @media (min-width: 48rem) {
+    font-size: 1.2em;
+  }
+
+  @media (min-width: 62.5rem) {
+    font-size: 1.5em;
   }
 }
