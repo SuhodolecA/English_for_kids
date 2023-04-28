@@ -23,6 +23,7 @@ const createMain = () => {
   // cards list
   const cardList = createElement('ul');
   cardList.classList.add('cards-list');
+  cardList.classList.add('start-page');
 
   mainContainer.append(categoryName);
   mainContainer.append(cardList);

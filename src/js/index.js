@@ -1,4 +1,4 @@
-import '../scss/main.scss';
+import '../scss/styles.scss';
 import createHeader from './components/header';
 import createMain from './components/main';
 import './utils/events';

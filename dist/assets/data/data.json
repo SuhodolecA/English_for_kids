@@ -4,7 +4,7 @@
   },
   {
     "section": "clothes",
-    "startImage": "./assets/images/cards-images/clothes/v-sweater.png",
+    "startImage": "./assets/images/start-page-cards-img/v-sweater.png",
     "linkPath": "#clothes",
     "sectionTitle": "Clothes",
     "sectionWords": [
@@ -68,7 +68,7 @@
   },
   {
     "section": "colours",
-    "startImage": "./assets/images/cards-images/colours/v-yellow.png",
+    "startImage": "./assets/images/start-page-cards-img/v-yellow.png",
     "linkPath": "#colours",
     "sectionTitle": "Colours",
     "sectionWords": [
@@ -132,7 +132,7 @@
   },
   {
     "section": "family",
-    "startImage": "./assets/images/cards-images/family/v-family.png",
+    "startImage": "./assets/images/start-page-cards-img/v-family.png",
     "linkPath": "#family",
     "sectionTitle": "Family",
     "sectionWords": [
@@ -196,7 +196,7 @@
   },
   {
     "section": "food",
-    "startImage": "./assets/images/cards-images/food/a-hamburger.png",
+    "startImage": "./assets/images/start-page-cards-img/a-hamburger.png",
     "linkPath": "#food",
     "sectionTitle": "Food",
     "sectionWords": [
@@ -260,7 +260,7 @@
   },
   {
     "section": "fruits",
-    "startImage": "./assets/images/cards-images/fruits/v-strawberry.png",
+    "startImage": "./assets/images/start-page-cards-img/v-strawberry.png",
     "linkPath": "#fruits",
     "sectionTitle": "Fruits",
     "sectionWords": [
@@ -324,7 +324,7 @@
   },
   {
     "section": "pets",
-    "startImage": "./assets/images/cards-images/pets/v-pony.png",
+    "startImage": "./assets/images/start-page-cards-img/v-pony.png",
     "linkPath": "#pets",
     "sectionTitle": "Pets",
     "sectionWords": [
@@ -388,7 +388,7 @@
   },
   {
     "section": "school",
-    "startImage": "./assets/images/cards-images/school/v-pupil.png",
+    "startImage": "./assets/images/start-page-cards-img/v-pupil.png",
     "linkPath": "#school",
     "sectionTitle": "School",
     "sectionWords": [
@@ -452,7 +452,7 @@
   },
   {
     "section": "sport",
-    "startImage": "./assets/images/cards-images/sport/v-tennis.png",
+    "startImage": "./assets/images/start-page-cards-img/v-tennis.png",
     "linkPath": "#sport",
     "sectionTitle": "Sport",
     "sectionWords": [

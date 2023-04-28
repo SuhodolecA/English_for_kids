@@ -39,18 +39,18 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[hash].[ext]',
-              outputPath: 'images',
-            },
-          },
-        ],
-      },
+      // {
+      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[name].[hash].[ext]',
+      //         outputPath: 'images',
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /data\.json$/i,
         loader: 'json5-loader',
