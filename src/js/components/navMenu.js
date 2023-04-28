@@ -1,4 +1,5 @@
-import { createElement, createNavMenuItem } from '../utils/helper';
+import { createElement } from '../utils/helper';
+import createNavMenuItem from './navMenuItem';
 
 const createNavMenu = (data) => {
   // create nav ul

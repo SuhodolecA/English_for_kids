@@ -1,4 +1,4 @@
-import data from '../../data/data.json';
+import data from '../../assets/data/data.json';
 import { createElement } from '../utils/helper';
 import createNavMenu from './navMenu';
 import createLogo from './logo';
@@ -8,6 +8,7 @@ import createNavMenuBtn from './navMenuBtn';
 const createHeader = () => {
   const headerElement = createElement('header');
   headerElement.classList.add('header');
+
   // create header logo
   const headerLogo = createLogo('English for kids', '#home');
 

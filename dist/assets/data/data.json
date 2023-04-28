@@ -4,63 +4,63 @@
   },
   {
     "section": "clothes",
-    "startImage": "assets/images//start-page-cards/v-sweater.png",
+    "startImage": "./assets/images/cards-images/clothes/v-sweater.png",
     "linkPath": "#clothes",
     "sectionTitle": "Clothes",
     "sectionWords": [
       {
         "word": "cap",
         "translation": "шапка",
-        "image": "assets/images/cards/clothes/a-cap.png",
+        "image": "./assets/images/cards-images/clothes/a-cap.png",
         "audioSrc": "assets/audio/clothes/cap.mp3",
         "alt": "cap image"
       },
       {
         "word": "jacket",
         "translation": "куртка",
-        "image": "assets/images/cards/clothes/a-jacket.png",
+        "image": "../images/cards-images/clothes/a-jacket.png",
         "audioSrc": "assets/audio/clothes/jacket.mp3",
         "alt": "jacket image"
       },
       {
         "word": "scarf",
         "translation": "шарф",
-        "image": "assets/images/cards/clothes/a-scarf.png",
+        "image": "./assets/images/cards-images/clothes/a-scarf.png",
         "audioSrc": "assets/audio/clothes/scarf.mp3",
         "alt": "scarf image"
       },
       {
         "word": "shoes",
         "translation": "ботинки",
-        "image": "assets/images/cards/clothes/a-shoes.png",
+        "image": "./assets/images/cards-images/clothes/a-shoes.png",
         "audioSrc": "assets/audio/clothes/shoes.mp3",
         "alt": "shoes image"
       },
       {
         "word": "blouse",
         "translation": "блузка",
-        "image": "assets/images/cards/clothes/v-blouse.png",
+        "image": "./assets/images/cards-images/clothes/v-blouse.png",
         "audioSrc": "assets/audio/clothes/blouse.mp3",
         "alt": "blouse image"
       },
       {
         "word": "coat",
         "translation": "блузка",
-        "image": "assets/images/cards/clothes/v-coat.png",
+        "image": "./assets/images/cards-images/clothes/v-coat.png",
         "audioSrc": "assets/audio/clothes/coat.mp3",
         "alt": "coat image"
       },
       {
         "word": "dress",
         "translation": "платье",
-        "image": "assets/images/cards/clothes/v-dress.png",
+        "image": "./assets/images/cards-images/clothes/v-dress.png",
         "audioSrc": "assets/audio/clothes/dress.mp3",
         "alt": "dress image"
       },
       {
         "word": "shirt",
         "translation": "рубашка",
-        "image": "assets/images/cards/clothes/v-shirt.png",
+        "image": "./assets/images/cards-images/clothes/v-shirt.png",
         "audioSrc": "assets/audio/clothes/shirt.mp3",
         "alt": "shirt image"
       }
@@ -68,63 +68,63 @@
   },
   {
     "section": "colours",
-    "startImage": "assets/images//start-page-cards/v-yellow.png",
+    "startImage": "./assets/images/cards-images/colours/v-yellow.png",
     "linkPath": "#colours",
     "sectionTitle": "Colours",
     "sectionWords": [
       {
         "word": "black",
         "translation": "черный",
-        "image": "assets/images/cards/colours/v-black.png",
+        "image": "./assets/images/cards-images/colours/v-black.png",
         "audioSrc": "assets/audio/colours/black.mp3",
         "alt": "black image"
       },
       {
         "word": "blue",
         "translation": "синий",
-        "image": "assets/images/cards/colours/v-blue.png",
+        "image": "./assets/images/cards-images/colours/v-blue.png",
         "audioSrc": "assets/audio/colours/blue.mp3",
         "alt": "blue image"
       },
       {
         "word": "brown",
         "translation": "коричневый",
-        "image": "assets/images/cards/colours/v-brown.png",
+        "image": "./assets/images/cards-images/colours/v-brown.png",
         "audioSrc": "assets/audio/colours/brown.mp3",
         "alt": "brown image"
       },
       {
         "word": "green",
         "translation": "зелёный",
-        "image": "assets/images/cards/colours/v-green.png",
+        "image": "./assets/images/cards-images/colours/v-green.png",
         "audioSrc": "assets/audio/colours/green.mp3",
         "alt": "green image"
       },
       {
         "word": "grey",
         "translation": "серый",
-        "image": "assets/images/cards/colours/v-grey.png",
+        "image": "./assets/images/cards-images/colours/v-grey.png",
         "audioSrc": "assets/audio/colours/grey.mp3",
         "alt": "grey image"
       },
       {
         "word": "orange",
         "translation": "оранжевый",
-        "image": "assets/images/cards/colours/v-orange-c.png",
+        "image": "./assets/images/cards-images/colours/v-orange-c.png",
         "audioSrc": "assets/audio/colours/orange.mp3",
         "alt": "orange image"
       },
       {
         "word": "pink",
         "translation": "розовый",
-        "image": "assets/images/cards/colours/v-pink.png",
+        "image": "./assets/images/cards-images/colours/v-pink.png",
         "audioSrc": "assets/audio/colours/pink.mp3",
         "alt": "pink image"
       },
       {
         "word": "red",
         "translation": "красный",
-        "image": "assets/images/cards/colours/v-red.png",
+        "image": "./assets/images/cards-images/colours/v-red.png",
         "audioSrc": "assets/audio/colours/red.mp3",
         "alt": "red image"
       }
@@ -132,63 +132,63 @@
   },
   {
     "section": "family",
-    "startImage": "assets/images//start-page-cards/v-family.png",
+    "startImage": "./assets/images/cards-images/family/v-family.png",
     "linkPath": "#family",
     "sectionTitle": "Family",
     "sectionWords": [
       {
         "word": "aunt",
         "translation": "тетя",
-        "image": "assets/images/cards/family/v-aunt.png",
+        "image": "./assets/images/cards-images/family/v-aunt.png",
         "audioSrc": "assets/audio/family/aunt.mp3",
         "alt": "aunt image"
       },
       {
         "word": "brother",
         "translation": "брат",
-        "image": "assets/images/cards/family/v-brother.png",
+        "image": "./assets/images/cards-images/family/v-brother.png",
         "audioSrc": "assets/audio/family/brother.mp3",
         "alt": "brother image"
       },
       {
         "word": "daddy",
         "translation": "папа",
-        "image": "assets/images/cards/family/v-daddy.png",
+        "image": "./assets/images/cards-images/family/v-daddy.png",
         "audioSrc": "assets/audio/family/daddy.mp3",
         "alt": "daddy image"
       },
       {
         "word": "grandma",
         "translation": "бабушка",
-        "image": "assets/images/cards/family/v-grandma.png",
+        "image": "./assets/images/cards-images/family/v-grandma.png",
         "audioSrc": "assets/audio/family/grandma.mp3",
         "alt": "grandma image"
       },
       {
         "word": "grandpa",
         "translation": "дедушка",
-        "image": "assets/images/cards/family/v-grandpa.png",
+        "image": "./assets/images/cards-images/family/v-grandpa.png",
         "audioSrc": "assets/audio/family/grandpa.mp3",
         "alt": "grandpa image"
       },
       {
         "word": "mummy",
         "translation": "мама",
-        "image": "assets/images/cards/family/v-mummy.png",
+        "image": "./assets/images/cards-images/family/v-mummy.png",
         "audioSrc": "assets/audio/family/mummy.mp3",
         "alt": "mummy image"
       },
       {
         "word": "sister",
         "translation": "сестра",
-        "image": "assets/images/cards/family/v-sister.png",
+        "image": "./assets/images/cards-images/family/v-sister.png",
         "audioSrc": "assets/audio/family/sister.mp3",
         "alt": "sister image"
       },
       {
         "word": "uncle",
         "translation": "дядя",
-        "image": "assets/images/cards/family/v-uncle.png",
+        "image": "./assets/images/cards-images/family/v-uncle.png",
         "audioSrc": "assets/audio/family/uncle.mp3",
         "alt": "uncle image"
       }
@@ -196,63 +196,63 @@
   },
   {
     "section": "food",
-    "startImage": "assets/images//start-page-cards/a-hamburger.png",
+    "startImage": "./assets/images/cards-images/food/a-hamburger.png",
     "linkPath": "#food",
     "sectionTitle": "Food",
     "sectionWords": [
       {
         "word": "egg",
         "translation": "яйцо",
-        "image": "assets/images/cards/food/a-egg.png",
+        "image": "./assets/images/cards-images/food/a-egg.png",
         "audioSrc": "assets/audio/food/egg.mp3",
         "alt": "egg image"
       },
       {
         "word": "ice cream",
         "translation": "мороженое",
-        "image": "assets/images/cards/food/a-icecream.png",
+        "image": "./assets/images/cards-images/food/a-icecream.png",
         "audioSrc": "assets/audio/food/ice-cream.mp3",
         "alt": "ice cream image"
       },
       {
         "word": "bread",
         "translation": "хлеб",
-        "image": "assets/images/cards/food/v-bread.png",
+        "image": "./assets/images/cards-images/food/v-bread.png",
         "audioSrc": "assets/audio/food/bread.mp3",
         "alt": "bread image"
       },
       {
         "word": "butter",
         "translation": "масло",
-        "image": "assets/images/cards/food/v-butter.png",
+        "image": "./assets/images/cards-images/food/v-butter.png",
         "audioSrc": "assets/audio/food/butter.mp3",
         "alt": "butter image"
       },
       {
         "word": "cake",
         "translation": "пирожное",
-        "image": "assets/images/cards/food/v-cake.png",
+        "image": "./assets/images/cards-images/food/v-cake.png",
         "audioSrc": "assets/audio/food/cake.mp3",
         "alt": "cake image"
       },
       {
         "word": "cheese",
         "translation": "сыр",
-        "image": "assets/images/cards/food/v-cheese.png",
+        "image": "./assets/images/cards-images/food/v-cheese.png",
         "audioSrc": "assets/audio/food/cheese.mp3",
         "alt": "cheese image"
       },
       {
         "word": "pizza",
         "translation": "пицца",
-        "image": "assets/images/cards/food/v-pizza.png",
+        "image": "./assets/images/cards-images/food/v-pizza.png",
         "audioSrc": "assets/audio/food/pizza.mp3",
         "alt": "pizza image"
       },
       {
         "word": "sandwich",
         "translation": "бутерброд",
-        "image": "assets/images/cards/food/v-sandwich.png",
+        "image": "./assets/images/cards-images/food/v-sandwich.png",
         "audioSrc": "assets/audio/food/sandwich.mp3",
         "alt": "sandwich image"
       }
@@ -260,63 +260,63 @@
   },
   {
     "section": "fruits",
-    "startImage": "assets/images//start-page-cards/v-strawberry.png",
+    "startImage": "./assets/images/cards-images/fruits/v-strawberry.png",
     "linkPath": "#fruits",
     "sectionTitle": "Fruits",
     "sectionWords": [
       {
         "word": "apple",
         "translation": "яблоко",
-        "image": "assets/images/cards/fruits/a-apple.png",
+        "image": "./assets/images/cards-images/fruits/a-apple.png",
         "audioSrc": "assets/audio/fruits/apple.mp3",
         "alt": "apple image"
       },
       {
         "word": "cherry",
         "translation": "вишня",
-        "image": "assets/images/cards/fruits/a-cherry.png",
+        "image": "./assets/images/cards-images/fruits/a-cherry.png",
         "audioSrc": "assets/audio/fruits/cherry.mp3",
         "alt": "cherry image"
       },
       {
         "word": "grape",
         "translation": "фигурное катание",
-        "image": "assets/images/cards/fruits/a-grapes.png",
+        "image": "./assets/images/cards-images/fruits/a-grapes.png",
         "audioSrc": "assets/audio/fruits/grape.mp3",
         "alt": "grape image"
       },
       {
         "word": "orange",
         "translation": "апельсин",
-        "image": "assets/images/cards/fruits/a-orange.png",
+        "image": "./assets/images/cards-images/fruits/a-orange.png",
         "audioSrc": "assets/audio/fruits/orange.mp3",
         "alt": "orange image"
       },
       {
         "word": "peach",
         "translation": "персик",
-        "image": "assets/images/cards/fruits/a-peach.png",
+        "image": "./assets/images/cards-images/fruits/a-peach.png",
         "audioSrc": "assets/audio/fruits/peach.mp3",
         "alt": "peach image"
       },
       {
         "word": "pineapple",
         "translation": "ананас",
-        "image": "assets/images/cards/fruits/a-pineapple.png",
+        "image": "./assets/images/cards-images/fruits/a-pineapple.png",
         "audioSrc": "assets/audio/fruits/pineapple.mp3",
         "alt": "pineapple image"
       },
       {
         "word": "banana",
         "translation": "банан",
-        "image": "assets/images/cards/fruits/v-banana.png",
+        "image": "./assets/images/cards-images/fruits/v-banana.png",
         "audioSrc": "assets/audio/fruits/banana.mp3",
         "alt": "banana image"
       },
       {
         "word": "lemon",
         "translation": "лимон",
-        "image": "assets/images/cards/fruits/v-lemon.png",
+        "image": "./assets/images/cards-images/fruits/v-lemon.png",
         "audioSrc": "assets/audio/fruits/lemon.mp3",
         "alt": "lemon image"
       }
@@ -324,63 +324,63 @@
   },
   {
     "section": "pets",
-    "startImage": "assets/images//start-page-cards/v-pony.png",
+    "startImage": "./assets/images/cards-images/pets/v-pony.png",
     "linkPath": "#pets",
     "sectionTitle": "Pets",
     "sectionWords": [
       {
         "word": "hamster",
         "translation": "хомяк",
-        "image": "assets/images/cards/pets/a-hamster.png",
+        "image": "./assets/images/cards-images/pets/a-hamster.png",
         "audioSrc": "assets/audio/pets/hamster.mp3",
         "alt": "hamster image"
       },
       {
         "word": "parrot",
         "translation": "попугай",
-        "image": "assets/images/cards/pets/a-parrot.png",
+        "image": "./assets/images/cards-images/pets/a-parrot.png",
         "audioSrc": "assets/audio/pets/parrot.mp3",
         "alt": "parrot image"
       },
       {
         "word": "turtle",
         "translation": "черепаха",
-        "image": "assets/images/cards/pets/a-turtle.png",
+        "image": "./assets/images/cards-images/pets/a-turtle.png",
         "audioSrc": "assets/audio/pets/turtle.mp3",
         "alt": "turtle image"
       },
       {
         "word": "kitten",
         "translation": "котёнок",
-        "image": "assets/images/cards/pets/h-kitten.png",
+        "image": "./assets/images/cards-images/pets/h-kitten.png",
         "audioSrc": "assets/audio/pets/kitten.mp3",
         "alt": "kitten image"
       },
       {
         "word": "puppy",
         "translation": "щенок",
-        "image": "assets/images/cards/pets/h-puppy.png",
+        "image": "./assets/images/cards-images/pets/h-puppy.png",
         "audioSrc": "assets/audio/pets/puppy.mp3",
         "alt": "puppy image"
       },
       {
         "word": "ferret",
         "translation": "хорек",
-        "image": "assets/images/cards/pets/v-ferret.png",
+        "image": "./assets/images/cards-images/pets/v-ferret.png",
         "audioSrc": "assets/audio/pets/ferret.mp3",
         "alt": "ferret image"
       },
       {
         "word": "fish",
         "translation": "рыба",
-        "image": "assets/images/cards/pets/v-fish.png",
+        "image": "./assets/images/cards-images/pets/v-fish.png",
         "audioSrc": "assets/audio/pets/fish.mp3",
         "alt": "fish image"
       },
       {
         "word": "mouse",
         "translation": "мышь",
-        "image": "assets/images/cards/pets/v-mouse.png",
+        "image": "./assets/images/cards-images/pets/v-mouse.png",
         "audioSrc": "assets/audio/pets/mouse.mp3",
         "alt": "mouse image"
       }
@@ -388,63 +388,63 @@
   },
   {
     "section": "school",
-    "startImage": "assets/images//start-page-cards/v-pupil.png",
+    "startImage": "./assets/images/cards-images/school/v-pupil.png",
     "linkPath": "#school",
     "sectionTitle": "School",
     "sectionWords": [
       {
         "word": "board",
         "translation": "доска",
-        "image": "assets/images/cards/school/v-board.png",
+        "image": "./assets/images/cards-images/school/v-board.png",
         "audioSrc": "assets/audio/school/board.mp3",
         "alt": "board image"
       },
       {
         "word": "book",
         "translation": "книга",
-        "image": "assets/images/cards/school/v-book.png",
+        "image": "./assets/images/cards-images/school/v-book.png",
         "audioSrc": "assets/audio/school/book.mp3",
         "alt": "book image"
       },
       {
         "word": "calculator",
         "translation": "черепаха",
-        "image": "assets/images/cards/school/v-calculator.png",
+        "image": "./assets/images/cards-images/school/v-calculator.png",
         "audioSrc": "assets/audio/school/calculator.mp3",
         "alt": "calculator image"
       },
       {
         "word": "classroom",
         "translation": "школьный класс",
-        "image": "assets/images/cards/school/v-classroom.png",
+        "image": "./assets/images/cards-images/school/v-classroom.png",
         "audioSrc": "assets/audio/school/classroom.mp3",
         "alt": "classroom image"
       },
       {
         "word": "map",
         "translation": "карта",
-        "image": "assets/images/cards/school/v-map.png",
+        "image": "./assets/images/cards-images/school/v-map.png",
         "audioSrc": "assets/audio/school/map.mp3",
         "alt": "map image"
       },
       {
         "word": "notebook",
         "translation": "тетрадь",
-        "image": "assets/images/cards/school/v-notebook.png",
+        "image": "./assets/images/cards-images/school/v-notebook.png",
         "audioSrc": "assets/audio/school/notebook.mp3",
         "alt": "notebook image"
       },
       {
         "word": "schoolbag",
         "translation": "портфель",
-        "image": "assets/images/cards/school/v-schoolbag.png",
+        "image": "./assets/images/cards-images/school/v-schoolbag.png",
         "audioSrc": "assets/audio/school/schoolbag.mp3",
         "alt": "schoolbag image"
       },
       {
         "word": "teacher",
         "translation": "учитель",
-        "image": "assets/images/cards/school/v-teacher.png",
+        "image": "./assets/images/cards-images/school/v-teacher.png",
         "audioSrc": "assets/audio/school/teacher.mp3",
         "alt": "teacher image"
       }
@@ -452,63 +452,63 @@
   },
   {
     "section": "sport",
-    "startImage": "assets/images//start-page-cards/v-tennis.png",
+    "startImage": "./assets/images/cards-images/sport/v-tennis.png",
     "linkPath": "#sport",
     "sectionTitle": "Sport",
     "sectionWords": [
       {
         "word": "basketball",
         "translation": "баскетбол",
-        "image": "assets/images/cards/sport/v-basketball.png",
+        "image": "./assets/images/cards-images/sport/v-basketball.png",
         "audioSrc": "assets/audio/sport/basketball.mp3",
         "alt": "basketball image"
       },
       {
         "word": "cycling",
         "translation": "езда на велосипеде",
-        "image": "assets/images/cards/sport/v-cycling.png",
+        "image": "./assets/images/cards-images/sport/v-cycling.png",
         "audioSrc": "assets/audio/sport/cycling.mp3",
         "alt": "cycling image"
       },
       {
         "word": "figure skating",
         "translation": "фигурное катание",
-        "image": "assets/images/cards/sport/v-figure-skating.png",
+        "image": "./assets/images/cards-images/sport/v-figure-skating.png",
         "audioSrc": "assets/audio/sport/figure-skating.mp3",
         "alt": "figure skating image"
       },
       {
         "word": "football",
         "translation": "футбол",
-        "image": "assets/images/cards/sport/v-football.png",
+        "image": "./assets/images/cards-images/sport/v-football.png",
         "audioSrc": "assets/audio/sport/football.mp3",
         "alt": "football image"
       },
       {
         "word": "hockey",
         "translation": "хоккей",
-        "image": "assets/images/cards/sport/v-hockey.png",
+        "image": "./assets/images/cards-images/sport/v-hockey.png",
         "audioSrc": "assets/audio/sport/hockey.mp3",
         "alt": "hockey image"
       },
       {
         "word": "skiing",
         "translation": "лыжный спорт",
-        "image": "assets/images/cards/sport/v-skiing.png",
+        "image": "./assets/images/cards-images/sport/v-skiing.png",
         "audioSrc": "assets/audio/sport/skiing.mp3",
         "alt": "skiing image"
       },
       {
         "word": "swimming",
         "translation": "плавание",
-        "image": "assets/images/cards/sport/v-swimming.png",
+        "image": "./assets/images/cards-images/sport/v-swimming.png",
         "audioSrc": "assets/audio/sport/swimming.mp3",
         "alt": "swimming image"
       },
       {
         "word": "boxing",
         "translation": "бокс",
-        "image": "assets/images/cards/sport/v-boxing.png",
+        "image": "./assets/images/cards-images/sport/v-boxing.png",
         "audioSrc": "assets/audio/sport/boxing.mp3",
         "alt": "boxing image"
       }

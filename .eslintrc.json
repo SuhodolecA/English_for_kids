@@ -5,9 +5,10 @@
     "node": true
   },
   "rules": {
-    "no-console": "warn",
+    // "no-console": "warn",
+    "no-console": "off",
     "no-debugger": "warn",
-    "no-unused-vars": "warn",
+    // "no-unused-vars": "warn",
     "semi": ["error", "always"],
     "quotes": ["error", "single"]
   }

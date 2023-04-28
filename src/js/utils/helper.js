@@ -1,3 +1,8 @@
+/* eslint-disable import/no-cycle */
+import { SET_VAR, GET_VAR } from './variables';
+import createStartPageCardSet from './createStartPgageCardsList';
+import data from '../../assets/data/data.json';
+
 // create element
 const createElement = (name) => {
   const element = document.createElement(name);
@@ -6,21 +11,22 @@ const createElement = (name) => {
 
 const capitalizeFirstWord = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
-const createNavMenuItem = (linkName) => {
-  // create li
-  const li = createElement('li');
-  li.classList.add('header-menu__item');
-
-  // create menu link
-  const link = createElement('a');
-  link.classList.add('header-menu__item-link');
-  link.href = `#${linkName}`;
-  link.dataset.section = capitalizeFirstWord(linkName);
-  link.textContent = capitalizeFirstWord(linkName);
-
-  li.append(link);
-
-  return li;
+const setGlobalValues = () => {
+  SET_VAR('categoryName', document.querySelector('.category-name'));
+  SET_VAR('cardsList', document.querySelector('.cards-list'));
 };
 
-export { createElement, createNavMenuItem };
+const createCardsSet = () => {
+  const category = GET_VAR('categoryName').textContent;
+  console.log('category', category);
+  if (category === 'Home') {
+    // generate start page
+    createStartPageCardSet(data);
+  } else {
+    // generate current category page
+  }
+};
+
+export {
+  createElement, setGlobalValues, createCardsSet, capitalizeFirstWord,
+};

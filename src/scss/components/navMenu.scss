@@ -51,39 +51,39 @@
     }
 
     &::after {
-      @include insert-icons('../images/header-menu-icons/home.png');
+      @include insert-icons('../assets/images/header-menu-icons/home.png');
     }
 
     &[data-section='Clothes']::after {
-      @include insert-icons('../images/header-menu-icons/clothes.png');
+      @include insert-icons('../assets/images/header-menu-icons/clothes.png');
     }
 
     &[data-section='Food']::after {
-      @include insert-icons('../images/header-menu-icons/food.png');
+      @include insert-icons('../assets/images/header-menu-icons/food.png');
     }
 
     &[data-section='Colours']::after {
-      @include insert-icons('../images/header-menu-icons/colours.png');
+      @include insert-icons('../assets/images/header-menu-icons/colours.png');
     }
 
     &[data-section='Fruits']::after {
-      @include insert-icons('../images/header-menu-icons/fruits.png');
+      @include insert-icons('../assets/images/header-menu-icons/fruits.png');
     }
 
     &[data-section='Pets']::after {
-      @include insert-icons('../images/header-menu-icons/pets.png');
+      @include insert-icons('../assets/images/header-menu-icons/pets.png');
     }
 
     &[data-section='School']::after {
-      @include insert-icons('../images/header-menu-icons/school.png');
+      @include insert-icons('../assets/images/header-menu-icons/school.png');
     }
 
     &[data-section='Sport']::after {
-      @include insert-icons('../images/header-menu-icons/sports.png');
+      @include insert-icons('../assets/images/header-menu-icons/sports.png');
     }
 
     &[data-section='Family']::after {
-      @include insert-icons('../images/header-menu-icons/family.png');
+      @include insert-icons('../assets/images/header-menu-icons/family.png');
     }
   }
 }
