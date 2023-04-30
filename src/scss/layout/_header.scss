@@ -44,4 +44,20 @@
       font-size: 1.5em;
     }
   }
+
+  &-nav.open {
+      .header-hamburger {
+        > span:first-child {
+          transform: rotate(45deg);
+        }
+
+        > span:nth-child(2) {
+          opacity: 0;
+        }
+
+        > span:last-child {
+          transform: rotate(-45deg);
+        }
+      }
+    }
 }

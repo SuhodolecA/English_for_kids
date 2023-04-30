@@ -1,4 +1,5 @@
 import { createElement } from '../utils/helper';
+import { GET_VAR } from '../utils/variables';
 
 const createToggle = () => {
   // create toggle
@@ -25,4 +26,21 @@ const createToggle = () => {
   return toggleBtn;
 };
 
-export default createToggle;
+const toggleBtnFunctionality = () => {
+  const hamburgerBtn = GET_VAR('hamburgerBtn');
+  const headerNav = GET_VAR('headerNav');
+  const headerMenu = GET_VAR('headerMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    if (headerNav.classList.contains('open')) {
+      headerNav.classList.remove('open');
+      headerMenu.classList.remove('slide-in');
+      headerMenu.classList.add('slide-out');
+    } else {
+      headerNav.classList.add('open');
+      headerMenu.classList.remove('slide-out');
+      headerMenu.classList.add('slide-in');
+    }
+  });
+};
+
+export { createToggle, toggleBtnFunctionality };

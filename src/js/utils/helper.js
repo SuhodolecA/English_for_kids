@@ -14,6 +14,9 @@ const capitalizeFirstWord = (word) => word.charAt(0).toUpperCase() + word.slice(
 const setGlobalValues = () => {
   SET_VAR('categoryName', document.querySelector('.category-name'));
   SET_VAR('cardsList', document.querySelector('.cards-list'));
+  SET_VAR('hamburgerBtn', document.querySelector('.header-hamburger'));
+  SET_VAR('headerNav', document.querySelector('.header-nav'));
+  SET_VAR('headerMenu', document.querySelector('.header-menu'));
 };
 
 const createCardsSet = () => {

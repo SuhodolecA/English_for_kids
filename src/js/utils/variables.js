@@ -1,6 +1,9 @@
 const VARIABLES = {
   categoryName: 'initial value',
   cardsList: 'initial value',
+  hamburgerBtn: 'initial value',
+  headerNav: 'initial value',
+  headerMenu: 'initial value',
 };
 
 const SET_VAR = (name, value) => {
