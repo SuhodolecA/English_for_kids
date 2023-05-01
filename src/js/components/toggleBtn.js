@@ -1,5 +1,7 @@
 import { createElement } from '../utils/helper';
 import { GET_VAR } from '../utils/variables';
+import { showOverlay, hideOverlay } from './overlay';
+import { openNavMenu, closeNavMenu } from './navMenu';
 
 const createToggle = () => {
   // create toggle
@@ -29,16 +31,17 @@ const createToggle = () => {
 const toggleBtnFunctionality = () => {
   const hamburgerBtn = GET_VAR('hamburgerBtn');
   const headerNav = GET_VAR('headerNav');
-  const headerMenu = GET_VAR('headerMenu');
+  const body = GET_VAR('body');
+  // const headerMenu = GET_VAR('headerMenu');
   hamburgerBtn.addEventListener('click', () => {
     if (headerNav.classList.contains('open')) {
-      headerNav.classList.remove('open');
-      headerMenu.classList.remove('slide-in');
-      headerMenu.classList.add('slide-out');
+      body.classList.remove('noscroll');
+      closeNavMenu(headerNav);
+      hideOverlay();
     } else {
-      headerNav.classList.add('open');
-      headerMenu.classList.remove('slide-out');
-      headerMenu.classList.add('slide-in');
+      body.classList.add('noscroll');
+      openNavMenu(headerNav);
+      showOverlay();
     }
   });
 };

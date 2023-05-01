@@ -4,6 +4,8 @@ const VARIABLES = {
   hamburgerBtn: 'initial value',
   headerNav: 'initial value',
   headerMenu: 'initial value',
+  overlay: 'initial value',
+  body: 'initial value',
 };
 
 const SET_VAR = (name, value) => {

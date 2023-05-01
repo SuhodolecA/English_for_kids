@@ -1,4 +1,5 @@
 import '../scss/styles.scss';
+import { createOverlay } from './components/overlay';
 import createHeader from './components/header';
 import createMain from './components/main';
 import createFooter from './components/footer';
@@ -10,6 +11,7 @@ import { GET_VAR } from './utils/variables';
 
 const appWrapper = document.querySelector('.wrapper');
 
+appWrapper.append(createOverlay());
 appWrapper.append(createHeader());
 appWrapper.append(createMain());
 appWrapper.append(createFooter());

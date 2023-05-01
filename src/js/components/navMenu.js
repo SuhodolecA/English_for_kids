@@ -1,5 +1,6 @@
 import { createElement } from '../utils/helper';
 import createNavMenuItem from './navMenuItem';
+import { GET_VAR } from '../utils/variables';
 
 const createNavMenu = (data) => {
   // create nav ul
@@ -13,4 +14,18 @@ const createNavMenu = (data) => {
   return navMenuUl;
 };
 
-export default createNavMenu;
+const openNavMenu = (headerNav) => {
+  const headerMenu = GET_VAR('headerMenu');
+  headerNav.classList.add('open');
+  headerMenu.classList.remove('slide-out');
+  headerMenu.classList.add('slide-in');
+};
+
+const closeNavMenu = (headerNav) => {
+  const headerMenu = GET_VAR('headerMenu');
+  headerNav.classList.remove('open');
+  headerMenu.classList.remove('slide-in');
+  headerMenu.classList.add('slide-out');
+};
+
+export { createNavMenu, openNavMenu, closeNavMenu };

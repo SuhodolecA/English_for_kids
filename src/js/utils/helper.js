@@ -17,6 +17,8 @@ const setGlobalValues = () => {
   SET_VAR('hamburgerBtn', document.querySelector('.header-hamburger'));
   SET_VAR('headerNav', document.querySelector('.header-nav'));
   SET_VAR('headerMenu', document.querySelector('.header-menu'));
+  SET_VAR('overlay', document.querySelector('.overlay'));
+  SET_VAR('body', document.querySelector('body'));
 };
 
 const createCardsSet = () => {

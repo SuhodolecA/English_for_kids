@@ -43,6 +43,11 @@ h6 {
 body {
   background-color: $color-primary;
   font-family: 'Comic Neue', cursive;
+
+
+  &.noscroll {
+    overflow: hidden;
+  }
 }
 
 // container
