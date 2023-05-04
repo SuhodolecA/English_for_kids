@@ -5,6 +5,8 @@ import { clearCardsListContainer } from './helper';
 
 const createStartPageCardSet = (array) => {
   const cardsList = GET_VAR('cardsList');
+  const categoryName = GET_VAR('categoryName');
+  categoryName.textContent = 'Home';
   cardsList.classList.add('start-page');
   cardsList.dataset.category = 'main-menu';
   clearCardsListContainer();

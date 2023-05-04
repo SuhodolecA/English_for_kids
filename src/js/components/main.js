@@ -18,7 +18,7 @@ const createMain = () => {
   // create category name
   const categoryName = createElement('h2');
   categoryName.classList.add('category-name');
-  categoryName.textContent = 'Home';
+  categoryName.textContent = '';
 
   // cards list
   const cardList = createElement('ul');

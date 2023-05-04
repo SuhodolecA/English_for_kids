@@ -6,7 +6,8 @@ import { clearCardsListContainer } from './helper';
 const createCardsListSection = (array, section) => {
   const cardsList = GET_VAR('cardsList');
   cardsList.classList.remove('start-page');
-  // const categoryName = GET_VAR('categoryName');
+  const categoryName = GET_VAR('categoryName');
+  categoryName.textContent = section;
   cardsList.dataset.category = section;
   clearCardsListContainer();
   array.forEach((element) => {

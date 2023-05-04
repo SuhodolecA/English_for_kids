@@ -38,7 +38,6 @@ const navigationMenuFunctionality = (event) => {
 
   if (event.target.closest('.start-page')) {
     const { section } = event.target.closest('.card-list__item').dataset;
-    categoryName.textContent = section;
     createCardsListSection(data, section);
   } else if (target.classList.contains('header-menu__item-link')) {
     const { section } = target.dataset;

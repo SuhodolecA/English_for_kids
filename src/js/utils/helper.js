@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { SET_VAR, GET_VAR } from './variables';
-import createStartPageCardSet from './createStartPageCardsList';
-import data from '../../assets/data/data.json';
+// import createStartPageCardSet from './createStartPageCardsList';
+// import data from '../../assets/data/data.json';
 
 // create element
 const createElement = (name) => {
@@ -27,18 +27,18 @@ const setGlobalValues = () => {
   SET_VAR('headerLogo', document.querySelector('.header-logo__link'));
 };
 
-const createCardsSet = () => {
-  const category = GET_VAR('categoryName').textContent;
-  console.log('category', category);
-  if (category === 'Home') {
-    // generate start page
-    createStartPageCardSet(data);
-  } else {
-    // generate current category page
-  }
-};
+// const createCardsSet = () => {
+//   const category = GET_VAR('categoryName').textContent;
+//   console.log('category', category);
+//   if (category === 'Home') {
+//     // generate start page
+//     createStartPageCardSet(data);
+//   } else {
+//     // generate current category page
+//   }
+// };
 
 export {
-  createElement, setGlobalValues, createCardsSet, capitalizeFirstWord,
+  createElement, setGlobalValues, capitalizeFirstWord,
   clearCardsListContainer,
 };
