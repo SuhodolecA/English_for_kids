@@ -34,6 +34,7 @@ const closeNavMenu = (headerNav) => {
 const navigationMenuFunctionality = (event) => {
   const { target } = event;
   const categoryName = GET_VAR('categoryName');
+  const hamburgerBtn = GET_VAR('hamburgerBtn');
 
   if (event.target.closest('.start-page')) {
     const { section } = event.target.closest('.card-list__item').dataset;
@@ -44,8 +45,10 @@ const navigationMenuFunctionality = (event) => {
     categoryName.textContent = section;
     if (section === 'Home') {
       createStartPageCardSet(data);
+      hamburgerBtn.click();
     } else {
       createCardsListSection(data, section);
+      hamburgerBtn.click();
     }
   }
 };

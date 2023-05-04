@@ -4,6 +4,7 @@ const VARIABLES = {
   hamburgerBtn: 'initial value',
   headerNav: 'initial value',
   headerMenu: 'initial value',
+  headerLogo: 'initial value',
   overlay: 'initial value',
   body: 'initial value',
 };

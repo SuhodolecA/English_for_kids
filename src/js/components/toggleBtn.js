@@ -1,7 +1,4 @@
 import { createElement } from '../utils/helper';
-import { GET_VAR } from '../utils/variables';
-import { showOverlay, hideOverlay } from './overlay';
-import { openNavMenu, closeNavMenu } from './navMenu';
 
 const createToggle = () => {
   // create toggle
@@ -28,22 +25,4 @@ const createToggle = () => {
   return toggleBtn;
 };
 
-const toggleBtnFunctionality = () => {
-  const hamburgerBtn = GET_VAR('hamburgerBtn');
-  const headerNav = GET_VAR('headerNav');
-  const body = GET_VAR('body');
-  // const headerMenu = GET_VAR('headerMenu');
-  hamburgerBtn.addEventListener('click', () => {
-    if (headerNav.classList.contains('open')) {
-      body.classList.remove('noscroll');
-      closeNavMenu(headerNav);
-      hideOverlay();
-    } else {
-      body.classList.add('noscroll');
-      openNavMenu(headerNav);
-      showOverlay();
-    }
-  });
-};
-
-export { createToggle, toggleBtnFunctionality };
+export default createToggle;

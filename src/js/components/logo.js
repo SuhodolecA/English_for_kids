@@ -1,4 +1,7 @@
 import { createElement } from '../utils/helper';
+import data from '../../assets/data/data.json';
+import { GET_VAR } from '../utils/variables';
+import createStartPageCardSet from '../utils/createStartPageCardsList';
 
 const createLogo = (logoText, logoHref) => {
   // create logo
@@ -15,4 +18,13 @@ const createLogo = (logoText, logoHref) => {
   return headerLogo;
 };
 
-export default createLogo;
+const logoFunctionality = () => {
+  createStartPageCardSet(data);
+};
+
+const setLogoEventListener = () => {
+  const headerLogo = GET_VAR('headerLogo');
+  headerLogo.addEventListener('click', logoFunctionality);
+};
+
+export { createLogo, setLogoEventListener };

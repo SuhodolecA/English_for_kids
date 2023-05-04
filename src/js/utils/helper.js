@@ -24,6 +24,7 @@ const setGlobalValues = () => {
   SET_VAR('headerMenu', document.querySelector('.header-menu'));
   SET_VAR('overlay', document.querySelector('.overlay'));
   SET_VAR('body', document.querySelector('body'));
+  SET_VAR('headerLogo', document.querySelector('.header-logo__link'));
 };
 
 const createCardsSet = () => {
