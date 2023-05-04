@@ -18,7 +18,7 @@ appWrapper.append(createFooter());
 document.addEventListener('DOMContentLoaded', () => {
   setGlobalValues();
   setEventListeners();
-  console.log(GET_VAR('categoryName'));
+  console.log(GET_VAR('headerMenu'));
   console.log(GET_VAR('cardsList'));
   // console.log(createCardItem());
   createCardsSet();

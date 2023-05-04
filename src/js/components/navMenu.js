@@ -1,13 +1,16 @@
+import data from '../../assets/data/data.json';
 import { createElement } from '../utils/helper';
 import createNavMenuItem from './navMenuItem';
 import { GET_VAR } from '../utils/variables';
+import createStartPageCardSet from '../utils/createStartPageCardsList';
+import createCardsListSection from '../utils/createCardsListSection';
 
-const createNavMenu = (data) => {
+const createNavMenu = (dataSet) => {
   // create nav ul
   const navMenuUl = createElement('ul');
   navMenuUl.classList.add('header-menu');
 
-  for (let i = 0; i < data.length; i += 1) {
+  for (let i = 0; i < dataSet.length; i += 1) {
     navMenuUl.append(createNavMenuItem(data[i].section));
   }
 
@@ -28,4 +31,33 @@ const closeNavMenu = (headerNav) => {
   headerMenu.classList.add('slide-out');
 };
 
-export { createNavMenu, openNavMenu, closeNavMenu };
+const navigationMenuFunctionality = (event) => {
+  const { target } = event;
+  const categoryName = GET_VAR('categoryName');
+
+  if (event.target.closest('.start-page')) {
+    const { section } = event.target.closest('.card-list__item').dataset;
+    categoryName.textContent = section;
+    createCardsListSection(data, section);
+  } else if (target.classList.contains('header-menu__item-link')) {
+    const { section } = target.dataset;
+    categoryName.textContent = section;
+    if (section === 'Home') {
+      createStartPageCardSet(data);
+    } else {
+      createCardsListSection(data, section);
+    }
+  }
+};
+
+const setNavMenuEventListener = () => {
+  const headerMenu = GET_VAR('headerMenu');
+  const cardsList = GET_VAR('cardsList');
+  headerMenu.addEventListener('click', navigationMenuFunctionality);
+  cardsList.addEventListener('click', navigationMenuFunctionality);
+};
+
+export {
+  createNavMenu, openNavMenu, closeNavMenu, navigationMenuFunctionality,
+  setNavMenuEventListener,
+};

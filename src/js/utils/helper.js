@@ -1,12 +1,17 @@
 /* eslint-disable import/no-cycle */
 import { SET_VAR, GET_VAR } from './variables';
-import createStartPageCardSet from './createStartPgageCardsList';
+import createStartPageCardSet from './createStartPageCardsList';
 import data from '../../assets/data/data.json';
 
 // create element
 const createElement = (name) => {
   const element = document.createElement(name);
   return element;
+};
+
+const clearCardsListContainer = () => {
+  const container = GET_VAR('cardsList');
+  container.innerHTML = '';
 };
 
 const capitalizeFirstWord = (word) => word.charAt(0).toUpperCase() + word.slice(1);
@@ -34,4 +39,5 @@ const createCardsSet = () => {
 
 export {
   createElement, setGlobalValues, createCardsSet, capitalizeFirstWord,
+  clearCardsListContainer,
 };

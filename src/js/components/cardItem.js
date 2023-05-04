@@ -6,6 +6,7 @@ const createCardItem = (imgPath, imgAlt, cardTitle, cardTranslation = '') => {
   const cardItem = createElement('li');
   cardItem.classList.add('card');
   cardItem.classList.add('card-list__item');
+  cardItem.dataset.section = cardTitle;
 
   // create card inner
   const cardInner = createElement('div');
