@@ -2,11 +2,10 @@ import '../scss/styles.scss';
 import data from '../assets/data/data.json';
 import { createOverlay } from './components/overlay';
 import createHeader from './components/header';
-import createMain from './components/main';
+import { createMain } from './components/main';
 import createFooter from './components/footer';
 import setEventListeners from './utils/events';
-import createStartPageCardSet from './utils/createStartPageCardsList';
-import { setGlobalValues } from './utils/helper';
+import { setGlobalValues, createStartPageCardSet } from './utils/helper';
 import { GET_VAR } from './utils/variables';
 
 // import createCardItem from './components/cardItem';

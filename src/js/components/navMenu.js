@@ -1,9 +1,7 @@
 import data from '../../assets/data/data.json';
-import { createElement } from '../utils/helper';
+import { createElement, createStartPageCardSet, createCardsListSection } from '../utils/helper';
 import createNavMenuItem from './navMenuItem';
 import { GET_VAR } from '../utils/variables';
-import createStartPageCardSet from '../utils/createStartPageCardsList';
-import createCardsListSection from '../utils/createCardsListSection';
 
 const createNavMenu = (dataSet) => {
   // create nav ul
@@ -31,35 +29,49 @@ const closeNavMenu = (headerNav) => {
   headerMenu.classList.add('slide-out');
 };
 
-const navigationMenuFunctionality = (event) => {
+const setNavMenuActiveState = (links, category) => {
+  links.forEach((link) => {
+    const linkSection = link.dataset.section;
+    if (linkSection === category) {
+      link.classList.add('active');
+    }
+  });
+};
+
+const removeNavMenuActiveState = (links) => {
+  links.forEach((link) => {
+    link.classList.remove('active');
+  });
+};
+
+const updateNavMeunLinksState = (category) => {
+  const navMenuLinks = GET_VAR('navMenuLinks');
+  removeNavMenuActiveState(navMenuLinks);
+  setNavMenuActiveState(navMenuLinks, category);
+};
+
+const hamburgerMenuFunctionality = (event) => {
   const { target } = event;
   const categoryName = GET_VAR('categoryName');
   const hamburgerBtn = GET_VAR('hamburgerBtn');
-
-  if (event.target.closest('.start-page')) {
-    const { section } = event.target.closest('.card-list__item').dataset;
+  const { section } = target.dataset;
+  categoryName.textContent = section;
+  if (section === 'Home') {
+    createStartPageCardSet(data);
+    hamburgerBtn.click();
+  } else {
     createCardsListSection(data, section);
-  } else if (target.classList.contains('header-menu__item-link')) {
-    const { section } = target.dataset;
-    categoryName.textContent = section;
-    if (section === 'Home') {
-      createStartPageCardSet(data);
-      hamburgerBtn.click();
-    } else {
-      createCardsListSection(data, section);
-      hamburgerBtn.click();
-    }
+    hamburgerBtn.click();
   }
+  updateNavMeunLinksState(categoryName.textContent);
 };
 
-const setNavMenuEventListener = () => {
+const setHamburgerMenuEventListener = () => {
   const headerMenu = GET_VAR('headerMenu');
-  const cardsList = GET_VAR('cardsList');
-  headerMenu.addEventListener('click', navigationMenuFunctionality);
-  cardsList.addEventListener('click', navigationMenuFunctionality);
+  headerMenu.addEventListener('click', hamburgerMenuFunctionality);
 };
 
 export {
-  createNavMenu, openNavMenu, closeNavMenu, navigationMenuFunctionality,
-  setNavMenuEventListener,
+  createNavMenu, openNavMenu, closeNavMenu, hamburgerMenuFunctionality,
+  setHamburgerMenuEventListener, updateNavMeunLinksState,
 };

@@ -1,13 +1,15 @@
 import { navMenuBtnFunctionality } from '../components/navMenuBtn';
 import { overlayFunctionality } from '../components/overlay';
-import { setNavMenuEventListener } from '../components/navMenu';
+import { setHamburgerMenuEventListener } from '../components/navMenu';
 import { setLogoEventListener } from '../components/logo';
+import { setMainSectionFunctionality } from '../components/main';
 
 const setEventListeners = () => {
   navMenuBtnFunctionality();
   overlayFunctionality();
-  setNavMenuEventListener();
+  setHamburgerMenuEventListener();
   setLogoEventListener();
+  setMainSectionFunctionality();
 };
 
 export default setEventListeners;

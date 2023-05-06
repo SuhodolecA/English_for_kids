@@ -1,7 +1,6 @@
-import { createElement } from '../utils/helper';
+import { createElement, createStartPageCardSet } from '../utils/helper';
 import data from '../../assets/data/data.json';
 import { GET_VAR } from '../utils/variables';
-import createStartPageCardSet from '../utils/createStartPageCardsList';
 
 const createLogo = (logoText, logoHref) => {
   // create logo

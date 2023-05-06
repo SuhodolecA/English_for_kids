@@ -1,4 +1,7 @@
-import { createElement } from '../utils/helper';
+import { createElement, createCardsListSection } from '../utils/helper';
+import { GET_VAR } from '../utils/variables';
+import data from '../../assets/data/data.json';
+import { updateNavMeunLinksState } from './navMenu';
 
 const createMain = () => {
   // create main element
@@ -33,4 +36,20 @@ const createMain = () => {
   return mainElement;
 };
 
-export default createMain;
+const mainMenuFunctionality = (target) => {
+  const { section } = target.closest('.card-list__item').dataset;
+  createCardsListSection(data, section);
+  updateNavMeunLinksState(section);
+};
+
+const setMainSectionFunctionality = () => {
+  const cardsList = GET_VAR('cardsList');
+  cardsList.addEventListener('click', (event) => {
+    const { target } = event;
+    if (cardsList.classList.contains('start-page')) {
+      mainMenuFunctionality(target);
+    }
+  });
+};
+
+export { createMain, mainMenuFunctionality, setMainSectionFunctionality };

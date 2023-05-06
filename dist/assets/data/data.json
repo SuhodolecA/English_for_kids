@@ -19,7 +19,7 @@
       {
         "word": "jacket",
         "translation": "куртка",
-        "image": "../images/cards-images/clothes/a-jacket.png",
+        "image": "/assets/images/cards-images/clothes/a-jacket.png",
         "audioSrc": "assets/audio/clothes/jacket.mp3",
         "alt": "jacket image"
       },
