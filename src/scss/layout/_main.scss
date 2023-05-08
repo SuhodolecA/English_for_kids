@@ -22,6 +22,12 @@
                 visibility: hidden;
             }
         }
+
+        &.start-page[data-mode="play"]{
+        .card-inner {
+            box-shadow: 0 0 1em 0.5em rgba(219, 219, 7, 0.6);
+        }
+     }
     }
 }
 

@@ -1,4 +1,5 @@
-import { createElement } from '../utils/helper';
+import { createElement, updateMode } from '../utils/helper';
+import { SET_VAR, GET_VAR } from '../utils/variables';
 
 const createToggle = () => {
   // create toggle
@@ -25,4 +26,17 @@ const createToggle = () => {
   return toggleBtn;
 };
 
-export default createToggle;
+//  stop here!!!!!!!! add and remove play class
+const toggleBtnFunctionality = () => {
+  const toggleBtn = GET_VAR('toggleBtn');
+  toggleBtn.ariaPressed = (toggleBtn.ariaPressed === 'false') ? 'true' : 'false';
+  SET_VAR('isPlayMode', toggleBtn.ariaPressed);
+  updateMode();
+};
+
+const setToggleBtnFunctionality = () => {
+  const toggleBtn = GET_VAR('toggleBtn');
+  toggleBtn.addEventListener('click', toggleBtnFunctionality);
+};
+
+export { createToggle, toggleBtnFunctionality, setToggleBtnFunctionality };

@@ -22,6 +22,4 @@ document.addEventListener('DOMContentLoaded', () => {
   setEventListeners();
   console.log(GET_VAR('headerMenu'));
   console.log(GET_VAR('cardsList'));
-  // console.log(createCardItem());
-  // createCardsSet();
 });

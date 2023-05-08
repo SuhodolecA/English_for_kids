@@ -8,6 +8,8 @@ const VARIABLES = {
   headerLogo: 'initial value',
   overlay: 'initial value',
   body: 'initial value',
+  toggleBtn: 'initial value',
+  isPlayMode: 'initial value',
 };
 
 const SET_VAR = (name, value) => {

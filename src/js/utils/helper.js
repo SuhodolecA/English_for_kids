@@ -25,6 +25,18 @@ const setGlobalValues = () => {
   SET_VAR('overlay', document.querySelector('.overlay'));
   SET_VAR('body', document.querySelector('body'));
   SET_VAR('headerLogo', document.querySelector('.header-logo__link'));
+  SET_VAR('toggleBtn', document.querySelector('.toggle-button'));
+  SET_VAR('isPlayMode', GET_VAR('toggleBtn').ariaPressed);
+};
+
+const updateMode = () => {
+  const cardsList = GET_VAR('cardsList');
+  const isPlayMode = GET_VAR('isPlayMode');
+  if (isPlayMode === 'true') {
+    cardsList.dataset.mode = 'play';
+  } else {
+    cardsList.dataset.mode = 'train';
+  }
 };
 
 const createStartPageCardSet = (array) => {
@@ -33,6 +45,7 @@ const createStartPageCardSet = (array) => {
   categoryName.textContent = 'Home';
   cardsList.classList.add('start-page');
   cardsList.dataset.category = 'main-menu';
+  updateMode();
   clearCardsListContainer();
   array.forEach((element) => {
     if (element.section !== 'home') {
@@ -51,6 +64,7 @@ const createCardsListSection = (array, section) => {
   const categoryName = GET_VAR('categoryName');
   categoryName.textContent = section;
   cardsList.dataset.category = section;
+  updateMode();
   clearCardsListContainer();
   array.forEach((element) => {
     if (element.sectionTitle === section) {
@@ -70,5 +84,5 @@ const createCardsListSection = (array, section) => {
 export {
   createElement, setGlobalValues, capitalizeFirstWord,
   clearCardsListContainer, createStartPageCardSet,
-  createCardsListSection,
+  createCardsListSection, updateMode,
 };

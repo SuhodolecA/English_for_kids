@@ -27,6 +27,7 @@ const createMain = () => {
   const cardList = createElement('ul');
   cardList.classList.add('cards-list');
   cardList.dataset.category = '';
+  cardList.dataset.mode = '';
 
   mainContainer.append(categoryName);
   mainContainer.append(cardList);
