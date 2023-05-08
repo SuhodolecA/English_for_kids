@@ -1,4 +1,7 @@
-import { createElement, createCardsListSection } from '../utils/helper';
+import {
+  createElement, createCardsListSection, isMainMenu, isCard, isTrainMode,
+  isPlayMode, trainModeFunctionality,
+} from '../utils/helper';
 import { GET_VAR } from '../utils/variables';
 import data from '../../assets/data/data.json';
 import { updateNavMeunLinksState } from './navMenu';
@@ -47,8 +50,14 @@ const setMainSectionFunctionality = () => {
   const cardsList = GET_VAR('cardsList');
   cardsList.addEventListener('click', (event) => {
     const { target } = event;
-    if (cardsList.classList.contains('start-page')) {
+    const cardInner = target.closest('.card-inner');
+    if (isMainMenu(cardsList) && isCard(target)) {
       mainMenuFunctionality(target);
+    } else if (!isMainMenu(cardsList) && isTrainMode(cardsList) && isCard(target)) {
+      console.log('train mode');
+      trainModeFunctionality(target, cardInner);
+    } else if (!isMainMenu(cardsList) && isPlayMode(cardsList) && isCard(target)) {
+      console.log('play mode');
     }
   });
 };

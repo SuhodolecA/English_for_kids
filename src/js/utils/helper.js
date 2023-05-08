@@ -52,7 +52,7 @@ const createStartPageCardSet = (array) => {
       const imgPath = element.startImage;
       const imgAlt = element.sectionWords[0].alt;
       const cardTitle = element.sectionTitle;
-      const cardItem = createCardItem(imgPath, imgAlt, cardTitle);
+      const cardItem = createCardItem(imgPath, imgAlt, cardTitle, cardTitle);
       cardsList.append(cardItem);
     }
   });
@@ -72,17 +72,66 @@ const createCardsListSection = (array, section) => {
       sectionData.forEach((item) => {
         const imgPath = item.image;
         const imgAlt = item.alt;
+        const cardSection = categoryName.textContent;
         const cardTitle = item.word;
         const cardTranslation = item.translation;
-        const cardItem = createCardItem(imgPath, imgAlt, cardTitle, cardTranslation);
+        const soundPath = item.audioSrc;
+        const cardItem = createCardItem(
+          imgPath,
+          imgAlt,
+          cardTitle,
+          cardSection,
+          cardTranslation,
+          soundPath,
+        );
         cardsList.append(cardItem);
       });
     }
   });
 };
 
+const playSound = (card, soundPath) => {
+  if (!card.classList.contains('playing')) {
+    const audio = new Audio(soundPath);
+    audio.play();
+    card.classList.add('playing');
+    audio.addEventListener('ended', () => {
+      card.classList.remove('playing');
+    });
+  }
+};
+
+const rotateCard = (element) => {
+  console.log('rotate');
+  element.classList.add('rotate');
+};
+
+const rotateBack = (element) => {
+  element.classList.remove('rotate');
+};
+
+const trainModeFunctionality = (target, cardInner) => {
+  if (target.classList.contains('rotate-btn')) {
+    rotateCard(cardInner);
+    cardInner.addEventListener('mouseleave', () => {
+      rotateBack(cardInner);
+    });
+  } else if (!cardInner.classList.contains('rotate')) {
+    const soundPath = target.closest('.card-list__item').dataset.sound;
+    const card = target.closest('.card-list__item');
+    playSound(card, soundPath);
+  }
+};
+
+const isMainMenu = (element) => element.classList.contains('start-page');
+const isCard = (element) => element.closest('.card-list__item');
+const isTrainMode = (element) => element.dataset.mode === 'train';
+const isPlayMode = (element) => element.dataset.mode === 'play';
+
 export {
   createElement, setGlobalValues, capitalizeFirstWord,
   clearCardsListContainer, createStartPageCardSet,
-  createCardsListSection, updateMode,
+  createCardsListSection, updateMode, playSound,
+  rotateCard, rotateBack, isMainMenu, isCard, isTrainMode,
+  isPlayMode, trainModeFunctionality,
 };

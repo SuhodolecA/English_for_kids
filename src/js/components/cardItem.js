@@ -1,12 +1,13 @@
 /* eslint-disable import/no-cycle */
 import { createElement } from '../utils/helper';
 
-const createCardItem = (imgPath, imgAlt, cardTitle, cardTranslation = '') => {
+const createCardItem = (imgPath, imgAlt, cardTitle, cardSection, cardTranslation = '', soundPath = '') => {
   // create card item
   const cardItem = createElement('li');
   cardItem.classList.add('card');
   cardItem.classList.add('card-list__item');
-  cardItem.dataset.section = cardTitle;
+  cardItem.dataset.section = cardSection;
+  cardItem.dataset.sound = soundPath;
 
   // create card inner
   const cardInner = createElement('div');
@@ -80,7 +81,6 @@ const createCardItem = (imgPath, imgAlt, cardTitle, cardTranslation = '') => {
   cardInner.append(cardBack);
 
   cardItem.append(cardInner);
-
   return cardItem;
 };
 

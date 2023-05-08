@@ -56,9 +56,12 @@ const hamburgerMenuFunctionality = (event) => {
   const hamburgerBtn = GET_VAR('hamburgerBtn');
   const { section } = target.dataset;
   categoryName.textContent = section;
+  console.log(section);
   if (section === 'Home') {
     createStartPageCardSet(data);
     hamburgerBtn.click();
+  } else if (section === undefined) {
+    return;
   } else {
     createCardsListSection(data, section);
     hamburgerBtn.click();

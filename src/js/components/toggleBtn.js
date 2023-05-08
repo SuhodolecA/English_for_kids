@@ -8,20 +8,20 @@ const createToggle = () => {
   toggleBtn.classList.add('toggle-button');
   toggleBtn.ariaPressed = false;
 
-  // create toggle mode-1
-  const toggleMode1 = createElement('span');
-  toggleMode1.classList.add('toggle-button__mode');
-  toggleMode1.classList.add('toggle-button__train');
-  toggleMode1.textContent = 'Train';
+  // create toggle mode train
+  const toggleModeTrain = createElement('span');
+  toggleModeTrain.classList.add('toggle-button__mode');
+  toggleModeTrain.classList.add('toggle-button__train');
+  toggleModeTrain.textContent = 'Train';
 
-  // create toggle mode-2
-  const toggleMode2 = createElement('span');
-  toggleMode2.classList.add('toggle-button__mode');
-  toggleMode2.classList.add('toggle-button__play');
-  toggleMode2.textContent = 'Play';
+  // create toggle mode play
+  const toggleModePlay = createElement('span');
+  toggleModePlay.classList.add('toggle-button__mode');
+  toggleModePlay.classList.add('toggle-button__play');
+  toggleModePlay.textContent = 'Play';
 
-  toggleBtn.append(toggleMode1);
-  toggleBtn.append(toggleMode2);
+  toggleBtn.append(toggleModeTrain);
+  toggleBtn.append(toggleModePlay);
 
   return toggleBtn;
 };
