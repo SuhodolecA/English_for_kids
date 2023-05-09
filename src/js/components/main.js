@@ -5,6 +5,7 @@ import {
 import { GET_VAR } from '../utils/variables';
 import data from '../../assets/data/data.json';
 import { updateNavMeunLinksState } from './navMenu';
+import createPlayRepeatBtn from './playRepeatBtn';
 
 const createMain = () => {
   // create main element
@@ -32,8 +33,12 @@ const createMain = () => {
   cardList.dataset.category = '';
   cardList.dataset.mode = '';
 
+  // create playRepeat button
+  const playRepeatBtn = createPlayRepeatBtn();
+
   mainContainer.append(categoryName);
   mainContainer.append(cardList);
+  mainContainer.append(playRepeatBtn);
 
   mainElement.append(mainContainer);
 

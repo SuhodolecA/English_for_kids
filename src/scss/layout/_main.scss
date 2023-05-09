@@ -1,6 +1,8 @@
 @import '../components/cardItem';
+@import '../components/playRepeatBtn';
 
 .main {
+    overflow: hidden;
     .category-name {
         font-size: 1.7em;
         text-align: center;
@@ -15,6 +17,7 @@
         row-gap: 1.875em;
         justify-content: space-around;
         padding: 0.625em;
+        margin-bottom: .5em;
 
 
         &.start-page {
@@ -26,6 +29,24 @@
         &.start-page[data-mode="play"]{
         .card-inner {
             box-shadow: 0 0 1em 0.5em rgba(219, 219, 7, 0.6);
+        }
+     }
+
+     &[data-category]:not([data-category="main-menu"])[data-mode="play"] {
+        .card-front__title {
+            position: relative;
+            padding: 0;
+            background-color: $whiteColor;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .rotate-btn {
+            display: none;
+        }
+
+        & ~ .play-btn {
+            bottom: 1.25rem;
         }
      }
     }
