@@ -4,6 +4,7 @@ import { setHamburgerMenuEventListener } from '../components/navMenu';
 import { setLogoEventListener } from '../components/logo';
 import { setMainSectionFunctionality } from '../components/main';
 import { setToggleBtnFunctionality } from '../components/toggleBtn';
+import { setPlayRepeatBtnFunctionality } from '../components/playRepeatBtn';
 
 const setEventListeners = () => {
   navMenuBtnFunctionality();
@@ -12,6 +13,7 @@ const setEventListeners = () => {
   setLogoEventListener();
   setMainSectionFunctionality();
   setToggleBtnFunctionality();
+  setPlayRepeatBtnFunctionality();
 };
 
 export default setEventListeners;

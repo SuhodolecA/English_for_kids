@@ -1,11 +1,16 @@
+/* eslint-disable import/no-cycle */
 import {
   createElement, createCardsListSection, isMainMenu, isCard, isTrainMode,
-  isPlayMode, trainModeFunctionality,
+  isPlayMode, trainModeFunctionality, isGameStarted,
+  isActiveCard, updateSoundList, addScoreIcon, playSound, isGameOver,
+  isGameOverSuccess,
 } from '../utils/helper';
 import { GET_VAR } from '../utils/variables';
 import data from '../../assets/data/data.json';
 import { updateNavMeunLinksState } from './navMenu';
-import createPlayRepeatBtn from './playRepeatBtn';
+import { showOverlay } from './overlay';
+import { createPlayRepeatBtn, playRepeatBtnFunctionality } from './playRepeatBtn';
+import { showModalWindow, hideModalWindow } from './modalWindow';
 
 const createMain = () => {
   // create main element
@@ -51,20 +56,67 @@ const mainMenuFunctionality = (target) => {
   updateNavMeunLinksState(section);
 };
 
-const setMainSectionFunctionality = () => {
+const mainSectionFunctionality = (event) => {
+  const { target } = event;
   const cardsList = GET_VAR('cardsList');
-  cardsList.addEventListener('click', (event) => {
-    const { target } = event;
-    const cardInner = target.closest('.card-inner');
-    if (isMainMenu(cardsList) && isCard(target)) {
-      mainMenuFunctionality(target);
-    } else if (!isMainMenu(cardsList) && isTrainMode(cardsList) && isCard(target)) {
-      console.log('train mode');
-      trainModeFunctionality(target, cardInner);
-    } else if (!isMainMenu(cardsList) && isPlayMode(cardsList) && isCard(target)) {
-      console.log('play mode');
+  const cardInner = target.closest('.card-inner');
+  if (isMainMenu(cardsList) && isCard(target)) {
+    mainMenuFunctionality(target);
+  } else if (!isMainMenu(cardsList) && isTrainMode(cardsList) && isCard(target)) {
+    console.log('train mode');
+    trainModeFunctionality(target, cardInner);
+  } else if (!isMainMenu(cardsList) && isPlayMode(cardsList) && isCard(target)
+    && isGameStarted()) {
+    console.log('play mode');
+    const currentCard = target.closest('.card-list__item');
+    const currentCardFront = currentCard.querySelector('.card-front');
+    const currentCardSound = currentCard.dataset.sound;
+    const currentSound = GET_VAR('soundsList').at(-1);
+    const playRepeatBtn = GET_VAR('playRepeatBtn');
+    const correctAnswerSound = 'assets/audio/answers-sound/correct-choice.mp3';
+    const successSound = 'assets/audio/answers-sound/success.mp3';
+    const correctIconSrc = 'assets/images/score-icons/correct.png';
+    const wrongIconSrc = 'assets/images/score-icons/wrong.png';
+    const wrongAnswerSound = 'assets/audio/answers-sound/negative_beeps.mp3';
+    const failureSound = 'assets/audio/answers-sound/failure.mp3';
+    if (isActiveCard(currentCardFront) && !playRepeatBtn.classList.contains('playing')) {
+      console.log('active');
+      if (currentCardSound === currentSound) {
+        console.log('correct');
+        currentCardFront.classList.add('inactive');
+        addScoreIcon(currentCard, correctIconSrc);
+        playSound(currentCard, correctAnswerSound);
+        updateSoundList();
+        playRepeatBtnFunctionality(playRepeatBtn);
+        if (isGameOver()) {
+          showOverlay();
+          if (isGameOverSuccess()) {
+            console.log('You are won!');
+            playSound(currentCard, successSound);
+            showModalWindow();
+            hideModalWindow();
+          } else {
+            console.log('You are lose!');
+            playSound(currentCard, failureSound);
+            showModalWindow();
+            hideModalWindow();
+          }
+        }
+      } else {
+        console.log('incorrect');
+        addScoreIcon(currentCard, wrongIconSrc);
+        playSound(currentCard, wrongAnswerSound);
+      }
     }
-  });
+  }
 };
 
-export { createMain, mainMenuFunctionality, setMainSectionFunctionality };
+const setMainSectionFunctionality = () => {
+  const cardsList = GET_VAR('cardsList');
+  cardsList.addEventListener('click', mainSectionFunctionality);
+};
+
+export {
+  createMain, mainMenuFunctionality, mainSectionFunctionality,
+  setMainSectionFunctionality,
+};

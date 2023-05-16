@@ -1,6 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { SET_VAR, GET_VAR } from './variables';
 import createCardItem from '../components/cardItem';
+import { resetPlayRepeatBtnState, playRepeatBtnFunctionality } from '../components/playRepeatBtn';
+import createScoreLineIcon from '../components/scoreLineIcon';
+import { mainSectionFunctionality } from '../components/main';
 
 // create element
 const createElement = (name) => {
@@ -8,9 +11,48 @@ const createElement = (name) => {
   return element;
 };
 
+const isMainMenu = (element) => element.classList.contains('start-page');
+const isCard = (element) => element.closest('.card-list__item');
+const isActiveCard = (card) => !card.classList.contains('inactive');
+const isTrainMode = (element) => element.dataset.mode === 'train';
+const isPlayMode = (element) => element.dataset.mode === 'play';
+const isGameStarted = () => GET_VAR('playRepeatBtn').classList.contains('repeat');
+const isGameOver = () => GET_VAR('soundsList').length === 0;
+const isGameOverSuccess = () => {
+  const iconsAmount = document.querySelectorAll('.score-line__icon').length;
+  const cardsAmount = document.querySelectorAll('.card-list__item').length;
+  return iconsAmount === cardsAmount;
+};
+
 const clearCardsListContainer = () => {
   const container = GET_VAR('cardsList');
   container.innerHTML = '';
+};
+
+const shuffleArray = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
+const updateSoundList = () => {
+  const soundsList = GET_VAR('soundsList').slice();
+  soundsList.pop();
+  SET_VAR('soundsList', soundsList);
+};
+
+const createNewSoundsList = () => {
+  const cards = document.querySelectorAll('.card-list__item');
+  const soundsList = [];
+  cards.forEach((card) => {
+    const { sound } = card.dataset;
+    soundsList.push(sound);
+  });
+
+  return soundsList;
 };
 
 const capitalizeFirstWord = (word) => word.charAt(0).toUpperCase() + word.slice(1);
@@ -26,13 +68,37 @@ const setGlobalValues = () => {
   SET_VAR('body', document.querySelector('body'));
   SET_VAR('headerLogo', document.querySelector('.header-logo__link'));
   SET_VAR('toggleBtn', document.querySelector('.toggle-button'));
+  SET_VAR('playRepeatBtn', document.querySelector('.play-btn'));
+  SET_VAR('scoreLine', document.querySelector('.score-line'));
+  SET_VAR('modalWindow', document.querySelector('.modal-window'));
+  SET_VAR('modalWindowText', document.querySelector('.modal-window__text'));
+  SET_VAR('modalWindowIcon', document.querySelector('.modal-window__icon'));
   SET_VAR('isPlayMode', GET_VAR('toggleBtn').ariaPressed);
+};
+
+const resetCardsState = () => {
+  const cards = document.querySelectorAll('.card-front');
+  cards.forEach((card) => card.classList.remove('inactive'));
+};
+
+const resetCardsSoundsList = () => {
+  const soundsList = createNewSoundsList();
+  SET_VAR('soundsList', shuffleArray(soundsList));
+};
+
+const resetScoreLine = () => {
+  const scoreLine = GET_VAR('scoreLine');
+  scoreLine.innerHTML = '';
 };
 
 const updateMode = () => {
   const cardsList = GET_VAR('cardsList');
-  const isPlayMode = GET_VAR('isPlayMode');
-  if (isPlayMode === 'true') {
+  const playMode = GET_VAR('isPlayMode');
+  resetPlayRepeatBtnState();
+  resetCardsState();
+  resetCardsSoundsList();
+  resetScoreLine();
+  if (playMode === 'true') {
     cardsList.dataset.mode = 'play';
   } else {
     cardsList.dataset.mode = 'train';
@@ -88,26 +154,39 @@ const createCardsListSection = (array, section) => {
       });
     }
   });
+  resetCardsSoundsList();
 };
 
-const playSound = (card, soundPath) => {
-  if (!card.classList.contains('playing')) {
-    const audio = new Audio(soundPath);
-    audio.play();
-    card.classList.add('playing');
+const playSound = (element, soundPath) => {
+  console.log('element', element);
+  const audio = new Audio(soundPath);
+  const cardsList = GET_VAR('cardsList');
+  const playRepeatBtn = GET_VAR('playRepeatBtn');
+  console.log('element === playRepeatBtn', element === playRepeatBtn);
+  audio.play();
+  if (element === playRepeatBtn) {
+    playRepeatBtn.removeEventListener('click', playRepeatBtnFunctionality);
     audio.addEventListener('ended', () => {
-      card.classList.remove('playing');
+      playRepeatBtn.addEventListener('click', playRepeatBtnFunctionality);
+    });
+  } else {
+    cardsList.removeEventListener('click', mainSectionFunctionality);
+    audio.addEventListener('ended', () => {
+      cardsList.addEventListener('click', mainSectionFunctionality);
     });
   }
 };
 
 const rotateCard = (element) => {
-  console.log('rotate');
-  element.classList.add('rotate');
+  if (!element.classList.contains('rotate')) {
+    element.classList.add('rotate');
+  }
 };
 
 const rotateBack = (element) => {
-  element.classList.remove('rotate');
+  if (element.classList.contains('rotate')) {
+    element.classList.remove('rotate');
+  }
 };
 
 const trainModeFunctionality = (target, cardInner) => {
@@ -123,15 +202,19 @@ const trainModeFunctionality = (target, cardInner) => {
   }
 };
 
-const isMainMenu = (element) => element.classList.contains('start-page');
-const isCard = (element) => element.closest('.card-list__item');
-const isTrainMode = (element) => element.dataset.mode === 'train';
-const isPlayMode = (element) => element.dataset.mode === 'play';
+const addScoreIcon = (card, src) => {
+  if (!card.classList.contains('playing')) {
+    const scoreIcon = createScoreLineIcon(src);
+    const scoreLine = GET_VAR('scoreLine');
+    scoreLine.prepend(scoreIcon);
+  }
+};
 
 export {
   createElement, setGlobalValues, capitalizeFirstWord,
   clearCardsListContainer, createStartPageCardSet,
   createCardsListSection, updateMode, playSound,
   rotateCard, rotateBack, isMainMenu, isCard, isTrainMode,
-  isPlayMode, trainModeFunctionality,
+  isPlayMode, trainModeFunctionality, shuffleArray, updateSoundList,
+  isGameStarted, addScoreIcon, isActiveCard, isGameOver, isGameOverSuccess,
 };

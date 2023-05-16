@@ -26,7 +26,6 @@ const createToggle = () => {
   return toggleBtn;
 };
 
-//  stop here!!!!!!!! add and remove play class
 const toggleBtnFunctionality = () => {
   const toggleBtn = GET_VAR('toggleBtn');
   toggleBtn.ariaPressed = (toggleBtn.ariaPressed === 'false') ? 'true' : 'false';

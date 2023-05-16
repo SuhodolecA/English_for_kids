@@ -1,6 +1,7 @@
 const VARIABLES = {
   categoryName: 'initial value',
   cardsList: 'initial value',
+  soundsList: 'initial value',
   hamburgerBtn: 'initial value',
   headerNav: 'initial value',
   headerMenu: 'initial value',
@@ -10,6 +11,13 @@ const VARIABLES = {
   body: 'initial value',
   toggleBtn: 'initial value',
   isPlayMode: 'initial value',
+  playRepeatBtn: 'initial value',
+  scoreLine: 'initial value',
+  modalWindow: 'initial value',
+  modalWindowIcon: 'initial value',
+  modalWindowText: 'initial value',
+  modalWindowIconWin: 'assets/images/score-icons/win-icon.png',
+  modalWindowIconLose: 'assets/images/score-icons/lose-icon.png',
 };
 
 const SET_VAR = (name, value) => {

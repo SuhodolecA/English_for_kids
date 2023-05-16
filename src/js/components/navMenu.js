@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import data from '../../assets/data/data.json';
 import { createElement, createStartPageCardSet, createCardsListSection } from '../utils/helper';
 import createNavMenuItem from './navMenuItem';

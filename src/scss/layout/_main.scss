@@ -3,6 +3,18 @@
 
 .main {
     overflow: hidden;
+
+    .score-line {
+        min-height: 3.125em;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        overflow: hidden;
+
+        &__icon {
+            vertical-align: middle;
+        }
+    }
     .category-name {
         font-size: 1.7em;
         text-align: center;
