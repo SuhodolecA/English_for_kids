@@ -130,6 +130,7 @@ const updateMode = () => {
 
 const createStatisticsTableHead = (data) => {
   const statisticsTableHead = createElement('thead');
+  statisticsTableHead.classList.add('stat-table__head');
   const headerRow = createElement('tr');
   const headerRowData = Object.keys(data[0]);
 
@@ -147,6 +148,7 @@ const createStatisticsTableHead = (data) => {
 const createStatisticsTableBody = (data) => {
   // create statistics table body
   const statisticsTableBody = createElement('tbody');
+  statisticsTableBody.classList.add('stat-table__body');
 
   data.forEach((item) => {
     const tBodyRow = createElement('tr');
@@ -167,6 +169,7 @@ const createStatisticsTableBody = (data) => {
 const createStatisticsTable = (data) => {
   // create statistics table
   const statisticsTable = createElement('table');
+  statisticsTable.classList.add('stat-table');
 
   // create statistics table head
   const statisticsTableHead = createStatisticsTableHead(data);

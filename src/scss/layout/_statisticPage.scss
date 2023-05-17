@@ -1,0 +1,25 @@
+@import '../components/statisticTable';
+
+.statistics-page {
+    &__controls {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5em;
+        margin-bottom: 0.5em;
+        &-btn {
+            border: 0;
+            background-color: $turquoiseColor;
+            padding: 0.5em 0.7em;
+            border-radius: 0.3em;
+            font-family: 'Chango', cursive;
+            font-size: 0.8em;
+            color: $shadePurpleColor;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+
+            &:hover, &:focus {
+                color: $whiteColor;
+            }
+        }
+    }
+}
