@@ -4,6 +4,7 @@ import createCardItem from '../components/cardItem';
 import { resetPlayRepeatBtnState, playRepeatBtnFunctionality } from '../components/playRepeatBtn';
 import createScoreLineIcon from '../components/scoreLineIcon';
 import { mainSectionFunctionality } from '../components/main';
+import dataSet from '../../assets/data/data.json';
 
 // create element
 const createElement = (name) => {
@@ -55,6 +56,27 @@ const createNewSoundsList = () => {
   return soundsList;
 };
 
+const createStartingStatisticsData = (data) => {
+  const result = [];
+  data.forEach((item) => {
+    if (item.section !== 'home') {
+      item.sectionWords.forEach((elem) => {
+        const obj = {
+          Categoty: item.sectionTitle,
+          Word: elem.word,
+          Translation: elem.translation,
+          Trained: 0,
+          Correct: 0,
+          Incorrect: 0,
+          '%': 0,
+        };
+        result.push(obj);
+      });
+    }
+  });
+  return result;
+};
+
 const capitalizeFirstWord = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
 const setGlobalValues = () => {
@@ -73,6 +95,7 @@ const setGlobalValues = () => {
   SET_VAR('modalWindow', document.querySelector('.modal-window'));
   SET_VAR('modalWindowText', document.querySelector('.modal-window__text'));
   SET_VAR('modalWindowIcon', document.querySelector('.modal-window__icon'));
+  SET_VAR('statisticData', createStartingStatisticsData(dataSet));
   SET_VAR('isPlayMode', GET_VAR('toggleBtn').ariaPressed);
 };
 
@@ -103,6 +126,58 @@ const updateMode = () => {
   } else {
     cardsList.dataset.mode = 'train';
   }
+};
+
+const createStatisticsTableHead = (data) => {
+  const statisticsTableHead = createElement('thead');
+  const headerRow = createElement('tr');
+  const headerRowData = Object.keys(data[0]);
+
+  headerRowData.forEach((key) => {
+    const headerRowTh = createElement('th');
+    headerRowTh.textContent = key;
+    headerRow.append(headerRowTh);
+  });
+
+  statisticsTableHead.append(headerRow);
+
+  return statisticsTableHead;
+};
+
+const createStatisticsTableBody = (data) => {
+  // create statistics table body
+  const statisticsTableBody = createElement('tbody');
+
+  data.forEach((item) => {
+    const tBodyRow = createElement('tr');
+    const tBodyRowData = Object.values(item);
+
+    tBodyRowData.forEach((value) => {
+      const tBodyRowCell = createElement('td');
+      tBodyRowCell.textContent = value;
+      tBodyRow.append(tBodyRowCell);
+    });
+
+    statisticsTableBody.append(tBodyRow);
+  });
+
+  return statisticsTableBody;
+};
+
+const createStatisticsTable = (data) => {
+  // create statistics table
+  const statisticsTable = createElement('table');
+
+  // create statistics table head
+  const statisticsTableHead = createStatisticsTableHead(data);
+
+  // create statistics table body
+  const statisticsTableBody = createStatisticsTableBody(data);
+
+  statisticsTable.append(statisticsTableHead);
+  statisticsTable.append(statisticsTableBody);
+
+  return statisticsTable;
 };
 
 const createStartPageCardSet = (array) => {
@@ -217,4 +292,5 @@ export {
   rotateCard, rotateBack, isMainMenu, isCard, isTrainMode,
   isPlayMode, trainModeFunctionality, shuffleArray, updateSoundList,
   isGameStarted, addScoreIcon, isActiveCard, isGameOver, isGameOverSuccess,
+  createStatisticsTable,
 };

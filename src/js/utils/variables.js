@@ -18,6 +18,7 @@ const VARIABLES = {
   modalWindowText: 'initial value',
   modalWindowIconWin: 'assets/images/score-icons/win-icon.png',
   modalWindowIconLose: 'assets/images/score-icons/lose-icon.png',
+  statisticData: [],
 };
 
 const SET_VAR = (name, value) => {
