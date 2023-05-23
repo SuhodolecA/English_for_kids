@@ -3,7 +3,7 @@ import {
   createElement, createCardsListSection, isMainMenu, isCard, isTrainMode,
   isPlayMode, trainModeFunctionality, isGameStarted,
   isActiveCard, updateSoundList, addScoreIcon, playSound, isGameOver,
-  isGameOverSuccess,
+  isGameOverSuccess, updateStatisticsPageData,
 } from '../utils/helper';
 import { GET_VAR } from '../utils/variables';
 import data from '../../assets/data/data.json';
@@ -81,6 +81,7 @@ const mainSectionFunctionality = (event) => {
     const failureSound = 'assets/audio/answers-sound/failure.mp3';
     if (isActiveCard(currentCardFront) && !playRepeatBtn.classList.contains('playing')) {
       console.log('active');
+      updateStatisticsPageData('play', currentCard, currentCardSound === currentSound);
       if (currentCardSound === currentSound) {
         console.log('correct');
         currentCardFront.classList.add('inactive');

@@ -56,24 +56,45 @@ const createNewSoundsList = () => {
   return soundsList;
 };
 
-const createStartingStatisticsData = (data) => {
+const percentCorrectAnswers = (obj) => Math.round((
+  obj.Correct / (obj.Correct + obj.Incorrect)) * 100);
+
+// (this.Correct / (this.Correct + this.Incorrect)) * 100
+
+const createStartingStatisticData = (data) => {
   const result = [];
   data.forEach((item) => {
     if (item.section !== 'home') {
       item.sectionWords.forEach((elem) => {
         const obj = {
-          Categoty: item.sectionTitle,
+          Category: item.sectionTitle,
           Word: elem.word,
           Translation: elem.translation,
           Trained: 0,
           Correct: 0,
           Incorrect: 0,
-          '%': 0,
+          'Accuracy %': 0,
         };
         result.push(obj);
       });
     }
   });
+  return result;
+};
+
+const createStatisticsData = (data) => {
+  const result = [];
+  const savedData = localStorage.getItem('statisticData');
+  if (!savedData) {
+    const startingData = createStartingStatisticData(data);
+    const startingDataToJson = JSON.stringify(startingData);
+    localStorage.setItem('statisticData', startingDataToJson);
+    result.push(...startingData);
+  } else {
+    const currentData = JSON.parse(savedData);
+    result.push(...currentData);
+  }
+
   return result;
 };
 
@@ -95,7 +116,7 @@ const setGlobalValues = () => {
   SET_VAR('modalWindow', document.querySelector('.modal-window'));
   SET_VAR('modalWindowText', document.querySelector('.modal-window__text'));
   SET_VAR('modalWindowIcon', document.querySelector('.modal-window__icon'));
-  SET_VAR('statisticData', createStartingStatisticsData(dataSet));
+  SET_VAR('statisticData', createStatisticsData(dataSet));
   SET_VAR('isPlayMode', GET_VAR('toggleBtn').ariaPressed);
 };
 
@@ -132,10 +153,16 @@ const createStatisticsTableHead = (data) => {
   const statisticsTableHead = createElement('thead');
   statisticsTableHead.classList.add('stat-table__head');
   const headerRow = createElement('tr');
+  headerRow.classList.add('stat-table__head-row');
+  headerRow.classList.add('table-row');
   const headerRowData = Object.keys(data[0]);
 
   headerRowData.forEach((key) => {
     const headerRowTh = createElement('th');
+    headerRowTh.classList.add('stat-table__head-row__cell');
+    headerRowTh.classList.add('table-cell');
+    headerRowTh.dataset.column = key;
+    headerRowTh.dataset.sort = (key === 'Category') || (key === 'Word') || (key === 'Translation') ? 'alph' : 'num';
     headerRowTh.textContent = key;
     headerRow.append(headerRowTh);
   });
@@ -152,10 +179,20 @@ const createStatisticsTableBody = (data) => {
 
   data.forEach((item) => {
     const tBodyRow = createElement('tr');
+    tBodyRow.classList.add('stat-table__body-row');
+    tBodyRow.classList.add('table-row');
     const tBodyRowData = Object.values(item);
+    const rowCategory = Object.values(item)[0];
+    const rowWord = Object.values(item)[1];
+    const headerRowData = Object.keys(data[0]);
+    tBodyRow.dataset.row = rowWord;
 
-    tBodyRowData.forEach((value) => {
+    tBodyRowData.forEach((value, index) => {
       const tBodyRowCell = createElement('td');
+      tBodyRowCell.classList.add('stat-table__body-row__cell');
+      tBodyRowCell.classList.add('table-cell');
+      tBodyRowCell.dataset.category = rowCategory;
+      tBodyRowCell.dataset.cell = headerRowData[index];
       tBodyRowCell.textContent = value;
       tBodyRow.append(tBodyRowCell);
     });
@@ -181,6 +218,72 @@ const createStatisticsTable = (data) => {
   statisticsTable.append(statisticsTableBody);
 
   return statisticsTable;
+};
+
+const setStatisticsTableFunctionality = () => {
+  const statTable = document.querySelector('.stat-table');
+  const statTableHeader = statTable.querySelector('.stat-table__head');
+  const statTableHeaderCells = statTable.querySelectorAll('.stat-table__head-row__cell');
+  const statisticsData = GET_VAR('statisticData');
+
+  statTableHeader.addEventListener('click', (event) => {
+    const { target } = event;
+    const statTableBody = statTable.querySelector('.stat-table__body');
+    // console.log('target', target);
+    // console.log('statTableHeaderCells', statTableHeaderCells);
+    const sortType = target.dataset.sort;
+    const sortCategory = target.dataset.column;
+    // console.log('sortCategory', sortCategory);
+    if (!target.classList.contains('ascend')) {
+      statTableHeaderCells.forEach((item) => item.classList.remove('ascend'));
+      statisticsData.sort((a, b) => {
+        a = a[sortCategory];
+        b = b[sortCategory];
+        target.classList.add('ascend');
+        if (sortType === 'alph') {
+          return a.localeCompare(b);
+        }
+        return b - a;
+      });
+    } else {
+      statisticsData.reverse();
+      target.classList.remove('ascend');
+    }
+    statTableBody.remove();
+    statTable.append(createStatisticsTableBody(statisticsData));
+  });
+};
+
+const updateStatisticsPageData = (mode, card, result) => {
+  const savedData = localStorage.getItem('statisticData');
+  const currentData = JSON.parse(savedData);
+  const cardTitle = card.querySelector('.card-front__title').textContent;
+  const cardCategory = card.dataset.section;
+  let currentItem = currentData
+    .filter((item) => (item.Category === cardCategory) && (item.Word === cardTitle))[0];
+  if (mode === 'train') {
+    currentItem.Trained += 1;
+  } else {
+    console.log('play');
+    console.log('card', card);
+    console.log('cardTitle', cardTitle);
+    console.log('currentItem', currentItem);
+    if (result) {
+      console.log('correct');
+      currentItem.Correct += 1;
+      currentItem['Accuracy %'] = percentCorrectAnswers(currentItem);
+    } else {
+      console.log('incorrect');
+      const cardListItems = Array.from(document.querySelectorAll('.card-list__item'));
+      const currentSound = GET_VAR('soundsList').at(-1);
+      const currentCard = cardListItems.filter((item) => item.dataset.sound === currentSound)[0];
+      [currentItem] = currentData.filter((item) => (item.Category === currentCard.dataset.section) && (item.Word === currentCard.querySelector('.card-front__title').textContent));
+      currentItem.Incorrect += 1;
+      currentItem['Accuracy %'] = percentCorrectAnswers(currentItem);
+    }
+  }
+  const currentDataToJson = JSON.stringify(currentData);
+  localStorage.setItem('statisticData', currentDataToJson);
 };
 
 const createStartPageCardSet = (array) => {
@@ -240,7 +343,7 @@ const playSound = (element, soundPath) => {
   const audio = new Audio(soundPath);
   const cardsList = GET_VAR('cardsList');
   const playRepeatBtn = GET_VAR('playRepeatBtn');
-  console.log('element === playRepeatBtn', element === playRepeatBtn);
+  // console.log('element === playRepeatBtn', element === playRepeatBtn);
   audio.play();
   if (element === playRepeatBtn) {
     playRepeatBtn.removeEventListener('click', playRepeatBtnFunctionality);
@@ -274,9 +377,12 @@ const trainModeFunctionality = (target, cardInner) => {
       rotateBack(cardInner);
     });
   } else if (!cardInner.classList.contains('rotate')) {
-    const soundPath = target.closest('.card-list__item').dataset.sound;
+    const currentCard = target.closest('.card-list__item');
+    const soundPath = currentCard.dataset.sound;
     const card = target.closest('.card-list__item');
     playSound(card, soundPath);
+    console.log('card', card);
+    updateStatisticsPageData('train', currentCard);
   }
 };
 
@@ -295,5 +401,5 @@ export {
   rotateCard, rotateBack, isMainMenu, isCard, isTrainMode,
   isPlayMode, trainModeFunctionality, shuffleArray, updateSoundList,
   isGameStarted, addScoreIcon, isActiveCard, isGameOver, isGameOverSuccess,
-  createStatisticsTable,
+  createStatisticsTable, updateStatisticsPageData, setStatisticsTableFunctionality,
 };

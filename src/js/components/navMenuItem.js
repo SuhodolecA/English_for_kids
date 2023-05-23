@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { createElement, capitalizeFirstWord } from '../utils/helper';
 
 const createNavMenuItem = (linkName) => {

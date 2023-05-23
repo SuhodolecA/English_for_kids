@@ -12,6 +12,7 @@ import { setGlobalValues, createStartPageCardSet } from './utils/helper';
 
 // import createCardItem from './components/cardItem';
 
+// localStorage.clear();
 const appWrapper = document.querySelector('.wrapper');
 
 appWrapper.append(createOverlay());
@@ -23,6 +24,6 @@ appWrapper.append(createFooter());
 document.addEventListener('DOMContentLoaded', () => {
   setGlobalValues();
   createStartPageCardSet(data);
-  setEventListeners();
   appWrapper.append(createStatisticsPage());
+  setEventListeners();
 });

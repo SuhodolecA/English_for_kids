@@ -5,6 +5,7 @@ import { setLogoEventListener } from '../components/logo';
 import { setMainSectionFunctionality } from '../components/main';
 import { setToggleBtnFunctionality } from '../components/toggleBtn';
 import { setPlayRepeatBtnFunctionality } from '../components/playRepeatBtn';
+import { setStatisticsTableFunctionality } from './helper';
 
 const setEventListeners = () => {
   navMenuBtnFunctionality();
@@ -14,6 +15,7 @@ const setEventListeners = () => {
   setMainSectionFunctionality();
   setToggleBtnFunctionality();
   setPlayRepeatBtnFunctionality();
+  setStatisticsTableFunctionality();
 };
 
 export default setEventListeners;
