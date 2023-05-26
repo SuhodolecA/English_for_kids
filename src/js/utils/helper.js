@@ -101,6 +101,7 @@ const createStatisticsData = (data) => {
 const capitalizeFirstWord = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
 const setGlobalValues = () => {
+  SET_VAR('mainSection', document.querySelector('.main'));
   SET_VAR('categoryName', document.querySelector('.category-name'));
   SET_VAR('cardsList', document.querySelector('.cards-list'));
   SET_VAR('hamburgerBtn', document.querySelector('.header-hamburger'));

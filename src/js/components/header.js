@@ -4,6 +4,7 @@ import { createNavMenu } from './navMenu';
 import { createLogo } from './logo';
 import { createToggle } from './toggleBtn';
 import { createNavMenuBtn } from './navMenuBtn';
+import { createStatisticsBtn } from './statisticsBtn';
 
 const createHeader = () => {
   const headerElement = createElement('header');
@@ -20,10 +21,7 @@ const createHeader = () => {
   const toggleBtn = createToggle();
 
   // create header statistics button
-  const statBtn = createElement('button');
-  statBtn.type = 'button';
-  statBtn.classList.add('statistics-button');
-  statBtn.textContent = 'Statistics';
+  const statBtn = createStatisticsBtn();
 
   headerBtnsContainer.append(toggleBtn);
   headerBtnsContainer.append(statBtn);

@@ -1,4 +1,5 @@
 const VARIABLES = {
+  mainSection: 'initial value',
   categoryName: 'initial value',
   cardsList: 'initial value',
   soundsList: 'initial value',

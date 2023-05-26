@@ -1,8 +1,10 @@
 @import '../components/cardItem';
 @import '../components/playRepeatBtn';
+@import './statisticPage';
 
 .main {
     overflow: hidden;
+    // position: relative;
 
     .score-line {
         min-height: 3.125em;
