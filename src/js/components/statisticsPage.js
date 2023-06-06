@@ -1,4 +1,8 @@
-import { createElement, createStatisticsTable } from '../utils/helper';
+import data from '../../assets/data/data.json';
+import {
+  createElement, createStatisticsTable, hideStatTable, createDiffWordsSection,
+  setStatisticsTableFunctionality, setGlobalValues,
+} from '../utils/helper';
 import { GET_VAR } from '../utils/variables';
 
 const createStatisticsPage = () => {
@@ -42,4 +46,51 @@ const createStatisticsPage = () => {
   return statisticsPage;
 };
 
-export default createStatisticsPage;
+const resetStatisticsBtnFunctionality = () => {
+  const resetStatBtn = document.querySelector('.reset-btn');
+  resetStatBtn.addEventListener('click', () => {
+    console.log('click reset btn');
+    localStorage.clear();
+    setGlobalValues();
+    const statisticsPage = document.querySelector('.statistics-page');
+    const statisticsPageContainer = statisticsPage.querySelector('.container');
+    const statisticsTable = document.querySelector('.stat-table');
+    const statisticsData = GET_VAR('statisticData');
+    statisticsTable.remove();
+    statisticsPageContainer.append(createStatisticsTable(statisticsData));
+    setStatisticsTableFunctionality();
+  });
+};
+
+const repeatDiffWordsFunctionality = () => {
+  const repeatDiffWordsBtn = document.querySelector('.repeat-btn');
+  repeatDiffWordsBtn.addEventListener('click', () => {
+    const statisticData = GET_VAR('statisticData').slice();
+    console.log('click repeat');
+    console.log('statisticData', statisticData.sort((a, b) => {
+      const elem1 = a['Accuracy %'];
+      const elem2 = b['Accuracy %'];
+
+      return elem1 - elem2;
+    }));
+    const repeatedData = statisticData.filter((item) => item['Accuracy %'] !== 0 && item['Accuracy %'] !== 100)
+      .slice(0, 8)
+      // .filter((item) => item[['Accuracy %']] !== 0)
+      .map((elem) => elem.Translation);
+    const repeatedDataSet = data
+      .filter((item) => item.sectionWords)
+      .map((elem) => elem.sectionWords)
+      .flat()
+      .filter((item) => repeatedData.includes(item.translation));
+    console.log('repeatedData', repeatedData);
+    console.log('repeatedDataSet', repeatedDataSet);
+    if (repeatedDataSet.length === 0) {
+      console.log('You dont have difficult words!');
+      return;
+    }
+    createDiffWordsSection(repeatedDataSet, 'Difficult words');
+    hideStatTable();
+  });
+};
+
+export { createStatisticsPage, repeatDiffWordsFunctionality, resetStatisticsBtnFunctionality };

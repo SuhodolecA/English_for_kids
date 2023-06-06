@@ -1,6 +1,9 @@
 /* eslint-disable import/no-cycle */
 import data from '../../assets/data/data.json';
-import { createElement, createStartPageCardSet, createCardsListSection } from '../utils/helper';
+import {
+  createElement, createStartPageCardSet, createCardsListSection,
+  hideStatTable,
+} from '../utils/helper';
 import createNavMenuItem from './navMenuItem';
 import { GET_VAR } from '../utils/variables';
 
@@ -58,6 +61,7 @@ const hamburgerMenuFunctionality = (event) => {
   const { section } = target.dataset;
   categoryName.textContent = section;
   console.log(section);
+  hideStatTable();
   if (section === 'Home') {
     createStartPageCardSet(data);
     hamburgerBtn.click();

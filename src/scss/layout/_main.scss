@@ -1,10 +1,14 @@
 @import '../components/cardItem';
 @import '../components/playRepeatBtn';
 @import './statisticPage';
+@import '../animations/appear';
+@import '../animations/disappear';
+
 
 .main {
     overflow: hidden;
-    // position: relative;
+    position: relative;
+    flex-grow: 1;
 
     .score-line {
         min-height: 3.125em;
@@ -61,6 +65,7 @@
 
         & ~ .play-btn {
             bottom: 1.25rem;
+            display: block;
         }
      }
     }

@@ -5,12 +5,13 @@
     border-radius: 50%;
     width: 3.75rem;
     height: 3.75rem;
-    bottom: -5rem;
+    bottom: -10rem;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
     box-shadow: 0 0 1.25em hsla(0, 0%, 0%, .5);
     transition: all .3s ease-in-out;
+    display: none;
 
     &.repeat {
         &::before {

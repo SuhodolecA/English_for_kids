@@ -126,6 +126,28 @@ const resetCardsState = () => {
   cards.forEach((card) => card.classList.remove('inactive'));
 };
 
+const showStatTable = () => {
+  const statisticsPage = document.querySelector('.statistics-page');
+  const mainSection = GET_VAR('mainSection');
+  const mainSectionContainer = mainSection.querySelector('.container');
+  mainSectionContainer.classList.remove('appear');
+  statisticsPage.classList.remove('slide-up');
+  mainSectionContainer.classList.add('disappear');
+  statisticsPage.classList.add('slide-down');
+};
+
+const hideStatTable = () => {
+  const statisticsPage = document.querySelector('.statistics-page');
+  if (statisticsPage.classList.contains('slide-down')) {
+    const mainSection = GET_VAR('mainSection');
+    const mainSectionContainer = mainSection.querySelector('.container');
+    statisticsPage.classList.remove('slide-down');
+    statisticsPage.classList.add('slide-up');
+    mainSectionContainer.classList.remove('disappear');
+    mainSectionContainer.classList.add('appear');
+  }
+};
+
 const resetCardsSoundsList = () => {
   const soundsList = createNewSoundsList();
   SET_VAR('soundsList', shuffleArray(soundsList));
@@ -230,11 +252,8 @@ const setStatisticsTableFunctionality = () => {
   statTableHeader.addEventListener('click', (event) => {
     const { target } = event;
     const statTableBody = statTable.querySelector('.stat-table__body');
-    // console.log('target', target);
-    // console.log('statTableHeaderCells', statTableHeaderCells);
     const sortType = target.dataset.sort;
     const sortCategory = target.dataset.column;
-    // console.log('sortCategory', sortCategory);
     if (!target.classList.contains('ascend')) {
       statTableHeaderCells.forEach((item) => item.classList.remove('ascend'));
       statisticsData.sort((a, b) => {
@@ -258,16 +277,19 @@ const setStatisticsTableFunctionality = () => {
 const updateStatisticsPageData = (mode, card, result) => {
   const savedData = localStorage.getItem('statisticData');
   const currentData = JSON.parse(savedData);
-  const cardTitle = card.querySelector('.card-front__title').textContent;
-  const cardCategory = card.dataset.section;
+  // const cardTitle = card.querySelector('.card-front__title').textContent;
+  const cardBackTitle = card.querySelector('.card-back__title').textContent;
+  // const cardCategory = card.dataset.section;
+  // let currentItem = currentData
+  //   .filter((item) => (item.Category === cardCategory) && (item.Word === cardTitle))[0];
   let currentItem = currentData
-    .filter((item) => (item.Category === cardCategory) && (item.Word === cardTitle))[0];
+    .filter((item) => (item.Translation === cardBackTitle))[0];
   if (mode === 'train') {
     currentItem.Trained += 1;
   } else {
     console.log('play');
     console.log('card', card);
-    console.log('cardTitle', cardTitle);
+    // console.log('cardTitle', cardTitle);
     console.log('currentItem', currentItem);
     if (result) {
       console.log('correct');
@@ -278,7 +300,16 @@ const updateStatisticsPageData = (mode, card, result) => {
       const cardListItems = Array.from(document.querySelectorAll('.card-list__item'));
       const currentSound = GET_VAR('soundsList').at(-1);
       const currentCard = cardListItems.filter((item) => item.dataset.sound === currentSound)[0];
-      [currentItem] = currentData.filter((item) => (item.Category === currentCard.dataset.section) && (item.Word === currentCard.querySelector('.card-front__title').textContent));
+      /* [currentItem] = currentData
+        .filter((item) => (
+          item.Category === currentCard.dataset.section) && (
+            item.Word === currentCard.querySelector('.card-front__title')
+        .textContent));
+        */
+      [currentItem] = currentData
+        .filter((item) => (
+          item.Translation === currentCard.querySelector('.card-back__title')
+            .textContent));
       currentItem.Incorrect += 1;
       currentItem['Accuracy %'] = percentCorrectAnswers(currentItem);
     }
@@ -304,6 +335,34 @@ const createStartPageCardSet = (array) => {
       cardsList.append(cardItem);
     }
   });
+};
+
+const createDiffWordsSection = (array, section) => {
+  const cardsList = GET_VAR('cardsList');
+  cardsList.classList.remove('start-page');
+  const categoryName = GET_VAR('categoryName');
+  categoryName.textContent = section;
+  cardsList.dataset.category = section;
+  updateMode();
+  clearCardsListContainer();
+  array.forEach((item) => {
+    const imgPath = item.image;
+    const imgAlt = item.alt;
+    const cardSection = categoryName.textContent;
+    const cardTitle = item.word;
+    const cardTranslation = item.translation;
+    const soundPath = item.audioSrc;
+    const cardItem = createCardItem(
+      imgPath,
+      imgAlt,
+      cardTitle,
+      cardSection,
+      cardTranslation,
+      soundPath,
+    );
+    cardsList.append(cardItem);
+  });
+  resetCardsSoundsList();
 };
 
 const createCardsListSection = (array, section) => {
@@ -403,4 +462,5 @@ export {
   isPlayMode, trainModeFunctionality, shuffleArray, updateSoundList,
   isGameStarted, addScoreIcon, isActiveCard, isGameOver, isGameOverSuccess,
   createStatisticsTable, updateStatisticsPageData, setStatisticsTableFunctionality,
+  createStatisticsTableBody, showStatTable, hideStatTable, createDiffWordsSection,
 };
