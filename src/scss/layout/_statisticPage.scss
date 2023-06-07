@@ -32,6 +32,15 @@
             cursor: pointer;
             transition: color 0.3s ease-in-out;
 
+            &:disabled {
+              background-color: $inActiveColor;
+              cursor: not-allowed;
+
+            &:hover, &:focus {
+                color: $shadePurpleColor;
+            }
+            }
+
             &:hover, &:focus {
                 color: $whiteColor;
             }

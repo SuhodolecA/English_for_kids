@@ -1,8 +1,9 @@
+import data from '../../assets/data/data.json';
 import {
   createElement, createStatisticsTable, setGlobalValues,
   setStatisticsTableFunctionality, showStatTable,
 } from '../utils/helper';
-import { GET_VAR } from '../utils/variables';
+import { GET_VAR, SET_VAR } from '../utils/variables';
 
 // create header statistics button
 const createStatisticsBtn = () => {
@@ -22,10 +23,37 @@ const statisticsBtnFunctionality = () => {
     const statisticsPage = document.querySelector('.statistics-page');
     const statisticsPageContainer = statisticsPage.querySelector('.container');
     const statisticsTable = document.querySelector('.stat-table');
-    const statisticsData = GET_VAR('statisticData');
+    const statisticData = GET_VAR('statisticData').slice();
     statisticsTable.remove();
-    statisticsPageContainer.append(createStatisticsTable(statisticsData));
+    statisticsPageContainer.append(createStatisticsTable(statisticData));
+    const repeatBtn = document.querySelector('.repeat-btn');
+    statisticData.sort((a, b) => {
+      const elem1 = a['Accuracy %'];
+      const elem2 = b['Accuracy %'];
+
+      return elem1 - elem2;
+    });
+    const repeatedData = statisticData.filter((item) => item['Accuracy %'] !== 'n/e' && item['Accuracy %'] !== 100)
+      .slice(0, 8)
+    // .filter((item) => item[['Accuracy %']] !== 0)
+      .map((elem) => elem.Translation);
+
+    const repeatedDataSet = data
+      .filter((item) => item.sectionWords)
+      .map((elem) => elem.sectionWords)
+      .flat()
+      .filter((item) => repeatedData.includes(item.translation));
+    console.log('repeatedData', repeatedData);
+    console.log('repeatedDataSet', repeatedDataSet);
+    SET_VAR('repeatedDataSet', repeatedDataSet);
+    if (repeatedDataSet.length !== 0) {
+      console.log('You dont have difficult words!');
+      repeatBtn.disabled = false;
+    } else {
+      repeatBtn.disabled = true;
+    }
     setStatisticsTableFunctionality();
+
     showStatTable();
   });
 };

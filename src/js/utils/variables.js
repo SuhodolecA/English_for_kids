@@ -20,6 +20,7 @@ const VARIABLES = {
   modalWindowIconWin: 'assets/images/score-icons/win-icon.png',
   modalWindowIconLose: 'assets/images/score-icons/lose-icon.png',
   statisticData: [],
+  repeatedDataSet: 'initial value',
 };
 
 const SET_VAR = (name, value) => {

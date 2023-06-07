@@ -73,7 +73,7 @@ const createStartingStatisticData = (data) => {
           Trained: 0,
           Correct: 0,
           Incorrect: 0,
-          'Accuracy %': 0,
+          'Accuracy %': 'n/e',
         };
         result.push(obj);
       });
@@ -254,16 +254,24 @@ const setStatisticsTableFunctionality = () => {
     const statTableBody = statTable.querySelector('.stat-table__body');
     const sortType = target.dataset.sort;
     const sortCategory = target.dataset.column;
+    const sortCategoryCells = statTable.querySelectorAll(`[data-cell='${sortCategory}']`);
+    const sortCategoryCellsValues = Array.from(sortCategoryCells).map((cell) => cell.textContent);
+    const areEmptyCells = sortCategoryCellsValues.every((item) => item === '0' || item === 'n/e');
+    if (areEmptyCells) {
+      return;
+    }
     if (!target.classList.contains('ascend')) {
       statTableHeaderCells.forEach((item) => item.classList.remove('ascend'));
       statisticsData.sort((a, b) => {
-        a = a[sortCategory];
-        b = b[sortCategory];
+        // console.log('a', a);
+        const num1 = a[[sortCategory]] === 'n/e' ? -1 : a[sortCategory];
+        // console.log('num1', num1);
+        const num2 = b[[sortCategory]] === 'n/e' ? -1 : b[sortCategory];
         target.classList.add('ascend');
         if (sortType === 'alph') {
-          return a.localeCompare(b);
+          return num1.localeCompare(num2);
         }
-        return b - a;
+        return num2 - num1;
       });
     } else {
       statisticsData.reverse();

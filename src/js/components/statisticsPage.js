@@ -1,4 +1,4 @@
-import data from '../../assets/data/data.json';
+// import data from '../../assets/data/data.json';
 import {
   createElement, createStatisticsTable, hideStatTable, createDiffWordsSection,
   setStatisticsTableFunctionality, setGlobalValues,
@@ -22,6 +22,7 @@ const createStatisticsPage = () => {
   // create repeat difficult words button
   const repeatBtn = createElement('button');
   repeatBtn.type = 'button';
+  repeatBtn.disabled = true;
   repeatBtn.classList.add('statistics-page__controls-btn');
   repeatBtn.classList.add('repeat-btn');
   repeatBtn.textContent = 'Repeat difficult words';
@@ -42,6 +43,32 @@ const createStatisticsPage = () => {
   statisticsPageContainer.append(statisticsPageButtons);
   statisticsPageContainer.append(statisticsPageTable);
 
+  // const statisticData = GET_VAR('statisticData').slice();
+  // statisticData.sort((a, b) => {
+  //   const elem1 = a['Accuracy %'];
+  //   const elem2 = b['Accuracy %'];
+
+  //   return elem1 - elem2;
+  // });
+  // const repeatedData = statisticData
+  // .filter((item) => item['Accuracy %'] !== 0 && item['Accuracy %'] !== 100)
+  //   .slice(0, 8)
+  //   // .filter((item) => item[['Accuracy %']] !== 0)
+  //   .map((elem) => elem.Translation);
+
+  // const repeatedDataSet = data
+  //   .filter((item) => item.sectionWords)
+  //   .map((elem) => elem.sectionWords)
+  //   .flat()
+  //   .filter((item) => repeatedData.includes(item.translation));
+  // console.log('repeatedData', repeatedData);
+  // console.log('repeatedDataSet', repeatedDataSet);
+  // SET_VAR('repeatedDataSet', repeatedDataSet);
+  // if (repeatedDataSet.length !== 0) {
+  //   console.log('You dont have difficult words!');
+  //   repeatBtn.disabled = false;
+  // }
+
   statisticsPage.append(statisticsPageContainer);
   return statisticsPage;
 };
@@ -59,35 +86,39 @@ const resetStatisticsBtnFunctionality = () => {
     statisticsTable.remove();
     statisticsPageContainer.append(createStatisticsTable(statisticsData));
     setStatisticsTableFunctionality();
+    const repeatBtn = document.querySelector('.repeat-btn');
+    repeatBtn.disabled = true;
   });
 };
 
 const repeatDiffWordsFunctionality = () => {
   const repeatDiffWordsBtn = document.querySelector('.repeat-btn');
   repeatDiffWordsBtn.addEventListener('click', () => {
-    const statisticData = GET_VAR('statisticData').slice();
+    // const statisticData = GET_VAR('statisticData').slice();
     console.log('click repeat');
-    console.log('statisticData', statisticData.sort((a, b) => {
-      const elem1 = a['Accuracy %'];
-      const elem2 = b['Accuracy %'];
+    // console.log('statisticData', statisticData.sort((a, b) => {
+    //   const elem1 = a['Accuracy %'];
+    //   const elem2 = b['Accuracy %'];
 
-      return elem1 - elem2;
-    }));
-    const repeatedData = statisticData.filter((item) => item['Accuracy %'] !== 0 && item['Accuracy %'] !== 100)
-      .slice(0, 8)
-      // .filter((item) => item[['Accuracy %']] !== 0)
-      .map((elem) => elem.Translation);
-    const repeatedDataSet = data
-      .filter((item) => item.sectionWords)
-      .map((elem) => elem.sectionWords)
-      .flat()
-      .filter((item) => repeatedData.includes(item.translation));
-    console.log('repeatedData', repeatedData);
-    console.log('repeatedDataSet', repeatedDataSet);
-    if (repeatedDataSet.length === 0) {
-      console.log('You dont have difficult words!');
-      return;
-    }
+    //   return elem1 - elem2;
+    // }));
+    // const repeatedData = statisticData
+    // .filter((item) => item['Accuracy %'] !== 0 && item['Accuracy %'] !== 100)
+    //   .slice(0, 8)
+    //   // .filter((item) => item[['Accuracy %']] !== 0)
+    //   .map((elem) => elem.Translation);
+    // const repeatedDataSet = data
+    //   .filter((item) => item.sectionWords)
+    //   .map((elem) => elem.sectionWords)
+    //   .flat()
+    //   .filter((item) => repeatedData.includes(item.translation));
+    // console.log('repeatedData', repeatedData);
+    // console.log('repeatedDataSet', repeatedDataSet);
+    // if (repeatedDataSet.length === 0) {
+    //   console.log('You dont have difficult words!');
+    //   return;
+    // }
+    const repeatedDataSet = GET_VAR('repeatedDataSet');
     createDiffWordsSection(repeatedDataSet, 'Difficult words');
     hideStatTable();
   });
