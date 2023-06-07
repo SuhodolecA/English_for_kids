@@ -71,8 +71,8 @@
     }
 
     &-back {
-        background-color: dodgerblue;
-        color: white;
+        background-color: hsl(210, 100%, 56%);
+        color: $whiteColor;
         transform: rotateY(180deg);
 
         .rotate-btn {
