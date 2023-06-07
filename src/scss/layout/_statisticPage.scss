@@ -27,10 +27,15 @@
             padding: 0.5em 0.7em;
             border-radius: 0.3em;
             font-family: 'Chango', cursive;
-            font-size: 0.8em;
+            font-size: 0.65em;
             color: $shadePurpleColor;
             cursor: pointer;
             transition: color 0.3s ease-in-out;
+
+
+              @media (min-width: 40rem) {
+                font-size: 0.8em;
+            }
 
             &:disabled {
               background-color: $inActiveColor;

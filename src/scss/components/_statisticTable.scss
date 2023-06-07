@@ -5,6 +5,22 @@
     border: 0.125rem solid $whiteColor;
     font-weight: 700;
 
+    @media (min-width: 20rem) {
+      font-size: 0.6em;
+    }
+
+    @media (min-width: 28.125rem) {
+      font-size: 0.7em;
+    }
+
+    @media (min-width: 48rem) {
+      font-size: 0.8em;
+    }
+
+    @media (min-width: 60rem) {
+      font-size: 0.9em;
+    }
+
     &__head {
         background-color: $whiteColor;
         color: $shadePurpleColor;
@@ -17,6 +33,7 @@
 
     th {
         cursor: pointer;
+        padding: 0.2em;
     }
 
     tr + tr {
@@ -27,7 +44,6 @@
     td + td,
     th + th {
         border-left: 0.125rem solid;
-        padding: 0.2em;
     }
 
 }
