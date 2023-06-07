@@ -44,7 +44,7 @@ const hideModalWindow = () => {
     modalWindow.classList.remove('appear');
     hideOverlay();
     createStartPageCardSet(data);
-  }, 3500);
+  }, 3000);
 };
 
 export { createModalWindow, showModalWindow, hideModalWindow };

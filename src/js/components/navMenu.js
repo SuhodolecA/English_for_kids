@@ -68,7 +68,6 @@ const hamburgerMenuFunctionality = (event) => {
   const hamburgerBtn = GET_VAR('hamburgerBtn');
   const { section } = target.dataset;
   categoryName.textContent = section;
-  console.log(section);
   hideStatTable();
   if (section === 'Home') {
     createStartPageCardSet(data);
