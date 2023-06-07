@@ -10,22 +10,16 @@ import setEventListeners from './utils/events';
 import { setGlobalValues, createStartPageCardSet } from './utils/helper';
 import { GET_VAR } from './utils/variables';
 
-// import createCardItem from './components/cardItem';
-
-// localStorage.clear();
 const appWrapper = document.querySelector('.wrapper');
-// createStartPageCardSet(data);
 appWrapper.append(createOverlay());
 appWrapper.append(createHeader());
 appWrapper.append(createModalWindow());
 appWrapper.append(createMain());
-// appWrapper.append(createStatisticsPage());
 appWrapper.append(createFooter());
 document.addEventListener('DOMContentLoaded', () => {
   setGlobalValues();
   createStartPageCardSet(data);
   const mainSection = GET_VAR('mainSection');
   mainSection.append(createStatisticsPage());
-  // appWrapper.append(createMain());
   setEventListeners();
 });
