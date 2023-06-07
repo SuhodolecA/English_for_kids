@@ -63,11 +63,9 @@ const mainSectionFunctionality = (event) => {
   if (isMainMenu(cardsList) && isCard(target)) {
     mainMenuFunctionality(target);
   } else if (!isMainMenu(cardsList) && isTrainMode(cardsList) && isCard(target)) {
-    console.log('train mode');
     trainModeFunctionality(target, cardInner);
   } else if (!isMainMenu(cardsList) && isPlayMode(cardsList) && isCard(target)
     && isGameStarted()) {
-    console.log('play mode');
     const currentCard = target.closest('.card-list__item');
     const currentCardFront = currentCard.querySelector('.card-front');
     const currentCardSound = currentCard.dataset.sound;
@@ -80,10 +78,8 @@ const mainSectionFunctionality = (event) => {
     const wrongAnswerSound = 'assets/audio/answers-sound/negative_beeps.mp3';
     const failureSound = 'assets/audio/answers-sound/failure.mp3';
     if (isActiveCard(currentCardFront) && !playRepeatBtn.classList.contains('playing')) {
-      console.log('active');
       updateStatisticsPageData('play', currentCard, currentCardSound === currentSound);
       if (currentCardSound === currentSound) {
-        console.log('correct');
         currentCardFront.classList.add('inactive');
         addScoreIcon(currentCard, correctIconSrc);
         playSound(currentCard, correctAnswerSound);
@@ -92,19 +88,16 @@ const mainSectionFunctionality = (event) => {
         if (isGameOver()) {
           showOverlay();
           if (isGameOverSuccess()) {
-            console.log('You are won!');
             playSound(currentCard, successSound);
             showModalWindow();
             hideModalWindow();
           } else {
-            console.log('You are lose!');
             playSound(currentCard, failureSound);
             showModalWindow();
             hideModalWindow();
           }
         }
       } else {
-        console.log('incorrect');
         addScoreIcon(currentCard, wrongIconSrc);
         playSound(currentCard, wrongAnswerSound);
       }

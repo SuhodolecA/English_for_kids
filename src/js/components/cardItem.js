@@ -26,8 +26,8 @@ const createCardItem = (imgPath, imgAlt, cardTitle, cardSection, cardTranslation
   const cardFrontImg = createElement('img');
   cardFrontImg.classList.add('card-front__pic-img');
   cardFrontImg.classList.add('card-img');
-  cardFrontImg.src = imgPath; // data.img
-  cardFrontImg.alt = imgAlt; // data.alt
+  cardFrontImg.src = imgPath;
+  cardFrontImg.alt = imgAlt;
 
   cardFrontImgContainer.append(cardFrontImg);
   cardFront.append(cardFrontImgContainer);
@@ -36,8 +36,7 @@ const createCardItem = (imgPath, imgAlt, cardTitle, cardSection, cardTranslation
   const cardFrontTitle = createElement('h3');
   cardFrontTitle.classList.add('card-front__title');
   cardFrontTitle.classList.add('card-title');
-  cardFrontTitle.textContent = cardTitle; // data.titleFront
-
+  cardFrontTitle.textContent = cardTitle;
   cardFront.append(cardFrontTitle);
 
   // create card front rotate button
@@ -62,8 +61,8 @@ const createCardItem = (imgPath, imgAlt, cardTitle, cardSection, cardTranslation
   const cardBackImg = createElement('img');
   cardBackImg.classList.add('card-back__pic-img');
   cardBackImg.classList.add('card-img');
-  cardBackImg.src = imgPath; // data.img
-  cardBackImg.alt = imgAlt; // data.alt
+  cardBackImg.src = imgPath;
+  cardBackImg.alt = imgAlt;
 
   cardBackImgContainer.append(cardBackImg);
 
@@ -73,7 +72,7 @@ const createCardItem = (imgPath, imgAlt, cardTitle, cardSection, cardTranslation
   const cardBackTitle = createElement('h3');
   cardBackTitle.classList.add('card-back__title');
   cardBackTitle.classList.add('card-title');
-  cardBackTitle.textContent = cardTranslation; // data.titleBack
+  cardBackTitle.textContent = cardTranslation;
 
   cardBack.append(cardBackTitle);
 

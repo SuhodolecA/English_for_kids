@@ -13,7 +13,6 @@ const createPlayRepeatBtn = () => {
 
 const playRepeatBtnFunctionality = () => {
   const playRepeatBtn = GET_VAR('playRepeatBtn');
-  // console.log('playRepeatBtnFunctionality');
   const soundsList = GET_VAR('soundsList');
   const currentSound = soundsList.at(-1);
   if (soundsList.length === 0) return;
@@ -32,9 +31,6 @@ const resetPlayRepeatBtnState = () => {
 
 const setPlayRepeatBtnFunctionality = () => {
   const playRepeatBtn = GET_VAR('playRepeatBtn');
-  // playRepeatBtn.addEventListener('click', () => {
-  //   playRepeatBtnFunctionality(playRepeatBtn);
-  // });
   playRepeatBtn.addEventListener('click', playRepeatBtnFunctionality);
 };
 

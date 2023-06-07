@@ -21,6 +21,10 @@ const createNavMenu = (dataSet) => {
 
 const openNavMenu = (headerNav) => {
   const headerMenu = GET_VAR('headerMenu');
+  const navMenuLinks = GET_VAR('navMenuLinks');
+  navMenuLinks.forEach((link) => {
+    link.tabIndex = 0;
+  });
   headerNav.classList.add('open');
   headerMenu.classList.remove('slide-out');
   headerMenu.classList.add('slide-in');
@@ -28,9 +32,13 @@ const openNavMenu = (headerNav) => {
 
 const closeNavMenu = (headerNav) => {
   const headerMenu = GET_VAR('headerMenu');
+  const navMenuLinks = GET_VAR('navMenuLinks');
   headerNav.classList.remove('open');
   headerMenu.classList.remove('slide-in');
   headerMenu.classList.add('slide-out');
+  navMenuLinks.forEach((link) => {
+    link.tabIndex = -1;
+  });
 };
 
 const setNavMenuActiveState = (links, category) => {

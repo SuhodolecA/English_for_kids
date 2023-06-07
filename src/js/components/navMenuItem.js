@@ -12,6 +12,7 @@ const createNavMenuItem = (linkName) => {
   link.href = `#${linkName}`;
   link.dataset.section = capitalizeFirstWord(linkName);
   link.textContent = capitalizeFirstWord(linkName);
+  link.tabIndex = -1;
 
   li.append(link);
 
