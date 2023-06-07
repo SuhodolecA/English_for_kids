@@ -59,8 +59,6 @@ const createNewSoundsList = () => {
 const percentCorrectAnswers = (obj) => Math.round((
   obj.Correct / (obj.Correct + obj.Incorrect)) * 100);
 
-// (this.Correct / (this.Correct + this.Incorrect)) * 100
-
 const createStartingStatisticData = (data) => {
   const result = [];
   data.forEach((item) => {
@@ -263,9 +261,7 @@ const setStatisticsTableFunctionality = () => {
     if (!target.classList.contains('ascend')) {
       statTableHeaderCells.forEach((item) => item.classList.remove('ascend'));
       statisticsData.sort((a, b) => {
-        // console.log('a', a);
         const num1 = a[[sortCategory]] === 'n/e' ? -1 : a[sortCategory];
-        // console.log('num1', num1);
         const num2 = b[[sortCategory]] === 'n/e' ? -1 : b[sortCategory];
         target.classList.add('ascend');
         if (sortType === 'alph') {
@@ -285,42 +281,25 @@ const setStatisticsTableFunctionality = () => {
 const updateStatisticsPageData = (mode, card, result) => {
   const savedData = localStorage.getItem('statisticData');
   const currentData = JSON.parse(savedData);
-  // const cardTitle = card.querySelector('.card-front__title').textContent;
   const cardBackTitle = card.querySelector('.card-back__title').textContent;
-  // const cardCategory = card.dataset.section;
-  // let currentItem = currentData
-  //   .filter((item) => (item.Category === cardCategory) && (item.Word === cardTitle))[0];
   let currentItem = currentData
     .filter((item) => (item.Translation === cardBackTitle))[0];
   if (mode === 'train') {
     currentItem.Trained += 1;
+  }
+  if (result) {
+    currentItem.Correct += 1;
+    currentItem['Accuracy %'] = percentCorrectAnswers(currentItem);
   } else {
-    console.log('play');
-    console.log('card', card);
-    // console.log('cardTitle', cardTitle);
-    console.log('currentItem', currentItem);
-    if (result) {
-      console.log('correct');
-      currentItem.Correct += 1;
-      currentItem['Accuracy %'] = percentCorrectAnswers(currentItem);
-    } else {
-      console.log('incorrect');
-      const cardListItems = Array.from(document.querySelectorAll('.card-list__item'));
-      const currentSound = GET_VAR('soundsList').at(-1);
-      const currentCard = cardListItems.filter((item) => item.dataset.sound === currentSound)[0];
-      /* [currentItem] = currentData
-        .filter((item) => (
-          item.Category === currentCard.dataset.section) && (
-            item.Word === currentCard.querySelector('.card-front__title')
-        .textContent));
-        */
-      [currentItem] = currentData
-        .filter((item) => (
-          item.Translation === currentCard.querySelector('.card-back__title')
-            .textContent));
-      currentItem.Incorrect += 1;
-      currentItem['Accuracy %'] = percentCorrectAnswers(currentItem);
-    }
+    const cardListItems = Array.from(document.querySelectorAll('.card-list__item'));
+    const currentSound = GET_VAR('soundsList').at(-1);
+    const currentCard = cardListItems.filter((item) => item.dataset.sound === currentSound)[0];
+    [currentItem] = currentData
+      .filter((item) => (
+        item.Translation === currentCard.querySelector('.card-back__title')
+          .textContent));
+    currentItem.Incorrect += 1;
+    currentItem['Accuracy %'] = percentCorrectAnswers(currentItem);
   }
   const currentDataToJson = JSON.stringify(currentData);
   localStorage.setItem('statisticData', currentDataToJson);
@@ -407,11 +386,9 @@ const createCardsListSection = (array, section) => {
 };
 
 const playSound = (element, soundPath) => {
-  console.log('element', element);
   const audio = new Audio(soundPath);
   const cardsList = GET_VAR('cardsList');
   const playRepeatBtn = GET_VAR('playRepeatBtn');
-  // console.log('element === playRepeatBtn', element === playRepeatBtn);
   audio.play();
   if (element === playRepeatBtn) {
     playRepeatBtn.removeEventListener('click', playRepeatBtnFunctionality);
@@ -449,7 +426,6 @@ const trainModeFunctionality = (target, cardInner) => {
     const soundPath = currentCard.dataset.sound;
     const card = target.closest('.card-list__item');
     playSound(card, soundPath);
-    console.log('card', card);
     updateStatisticsPageData('train', currentCard);
   }
 };
