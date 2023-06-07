@@ -18,7 +18,6 @@ const createStatisticsBtn = () => {
 const statisticsBtnFunctionality = () => {
   const statBtn = document.querySelector('.statistics-button');
   statBtn.addEventListener('click', () => {
-    console.log('click statistics btn');
     setGlobalValues();
     const statisticsPage = document.querySelector('.statistics-page');
     const statisticsPageContainer = statisticsPage.querySelector('.container');
@@ -35,7 +34,6 @@ const statisticsBtnFunctionality = () => {
     });
     const repeatedData = statisticData.filter((item) => item['Accuracy %'] !== 'n/e' && item['Accuracy %'] !== 100)
       .slice(0, 8)
-    // .filter((item) => item[['Accuracy %']] !== 0)
       .map((elem) => elem.Translation);
 
     const repeatedDataSet = data
@@ -43,11 +41,8 @@ const statisticsBtnFunctionality = () => {
       .map((elem) => elem.sectionWords)
       .flat()
       .filter((item) => repeatedData.includes(item.translation));
-    console.log('repeatedData', repeatedData);
-    console.log('repeatedDataSet', repeatedDataSet);
     SET_VAR('repeatedDataSet', repeatedDataSet);
     if (repeatedDataSet.length !== 0) {
-      console.log('You dont have difficult words!');
       repeatBtn.disabled = false;
     } else {
       repeatBtn.disabled = true;
