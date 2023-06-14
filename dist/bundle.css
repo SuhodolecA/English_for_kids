@@ -561,7 +561,7 @@ body.noscroll {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: url(../5ddf2eda612f02e5112a.png);
+  background: url(../assets/images/home.5ddf2eda612f02e5112a.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -575,7 +575,7 @@ body.noscroll {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: url(../53816f5205b3b794c3f2.png);
+  background: url(../assets/images/clothes.53816f5205b3b794c3f2.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -589,7 +589,7 @@ body.noscroll {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: url(../d91a02db1bbbeadaf207.png);
+  background: url(../assets/images/food.d91a02db1bbbeadaf207.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -603,7 +603,7 @@ body.noscroll {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: url(../2462174dc6a3668aa284.png);
+  background: url(../assets/images/colours.2462174dc6a3668aa284.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -617,7 +617,7 @@ body.noscroll {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: url(../2351413cc81ea73624f1.png);
+  background: url(../assets/images/fruits.2351413cc81ea73624f1.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -631,7 +631,7 @@ body.noscroll {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: url(../b31419ccb131d794ad3e.png);
+  background: url(../assets/images/pets.b31419ccb131d794ad3e.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -645,7 +645,7 @@ body.noscroll {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: url(../a9a3c6d30f9714f6abad.png);
+  background: url(../assets/images/school.a9a3c6d30f9714f6abad.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -659,7 +659,7 @@ body.noscroll {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: url(../8c7ac1f101986b39c2e2.png);
+  background: url(../assets/images/sports.8c7ac1f101986b39c2e2.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -673,7 +673,7 @@ body.noscroll {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: url(../b6729a64120277bd5673.png);
+  background: url(../assets/images/family.b6729a64120277bd5673.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -852,7 +852,7 @@ body.noscroll {
   height: 35px;
   font-size: 0;
   border: 0;
-  background: hsl(166, 72%, 49%) url(../95427d88d4d4016bc74b.svg) center center no-repeat;
+  background: hsl(166, 72%, 49%) url(../assets/images/rotate.95427d88d4d4016bc74b.svg) center center no-repeat;
   background-size: 65%;
   border-top-left-radius: 1rem;
   cursor: pointer;
@@ -906,7 +906,7 @@ body.noscroll {
 }
 .play-btn::before {
   content: "";
-  background-image: url(../d8c3090e96b03a27df79.png);
+  background-image: url(../assets/images/play.d8c3090e96b03a27df79.png);
   background-position: 50% 50%;
   width: 3.125rem;
   height: 3.125rem;
@@ -917,7 +917,7 @@ body.noscroll {
 }
 .play-btn::after {
   content: "";
-  background-image: url(../4e1c8d0c45f5777335a8.png);
+  background-image: url(../assets/images/replay.4e1c8d0c45f5777335a8.png);
   background-position: 50% 50%;
   width: 3.125rem;
   height: 3.125rem;

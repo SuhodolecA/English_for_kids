@@ -31,6 +31,13 @@ module.exports = {
         ],
       },
       {
+      test: /\.(png|jpe?g|gif|svg)$/i,
+      type: 'asset/resource',
+      generator: {
+        filename: 'assets/images/[name].[contenthash][ext]',
+      },
+    },
+      {
         test: /data\.json$/i,
         loader: 'json5-loader',
         type: 'javascript/auto',
