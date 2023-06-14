@@ -19,38 +19,17 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/i,
         use: [
-          // {
-          //   loader: MiniCssExtractPlugin.loader,
-          // },
           {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'postcss-loader',
-          },
-          {
-            loader: 'sass-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              implementation: require('sass'),
+              publicPath: '../',
             },
           },
+          'css-loader',
+          'sass-loader',
+          'postcss-loader',
         ],
       },
-      // {
-      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         name: '[name].[hash].[ext]',
-      //         outputPath: 'images',
-      //       },
-      //     },
-      //   ],
-      // },
       {
         test: /data\.json$/i,
         loader: 'json5-loader',
