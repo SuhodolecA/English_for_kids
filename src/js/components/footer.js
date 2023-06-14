@@ -1,6 +1,5 @@
 import { createElement } from '../utils/helper';
 
-// Stop here
 const createFooter = () => {
   // create footer
   const footerElement = createElement('footer');
