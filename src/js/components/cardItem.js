@@ -1,6 +1,35 @@
 /* eslint-disable import/no-cycle */
 import { createElement } from '../utils/helper';
 
+const createCardItemImg = (imgPath, imgAlt, imgClass) => {
+  const cardItemImg = createElement('img');
+  cardItemImg.classList.add(imgClass);
+  cardItemImg.classList.add('card-img');
+  cardItemImg.src = imgPath;
+  cardItemImg.alt = imgAlt;
+
+  return cardItemImg;
+};
+
+const createCardItemTitle = (titleText, titleClass) => {
+  const cardTitle = createElement('h3');
+  cardTitle.classList.add(titleClass);
+  cardTitle.classList.add('card-title');
+  cardTitle.textContent = titleText;
+
+  return cardTitle;
+};
+
+const createCardRotateBtn = (rotateBtnClass, rotateBtnText) => {
+  const cardRotateBtn = createElement('button');
+  cardRotateBtn.classList.add(rotateBtnClass);
+  cardRotateBtn.classList.add('rotate-btn');
+  cardRotateBtn.type = 'button';
+  cardRotateBtn.textContent = rotateBtnText;
+
+  return cardRotateBtn;
+};
+
 const createCardItem = (imgPath, imgAlt, cardTitle, cardSection, cardTranslation = '', soundPath = '') => {
   // create card item
   const cardItem = createElement('li');
@@ -23,28 +52,18 @@ const createCardItem = (imgPath, imgAlt, cardTitle, cardSection, cardTranslation
   cardFrontImgContainer.classList.add('card-pic');
 
   // create card front image
-  const cardFrontImg = createElement('img');
-  cardFrontImg.classList.add('card-front__pic-img');
-  cardFrontImg.classList.add('card-img');
-  cardFrontImg.src = imgPath;
-  cardFrontImg.alt = imgAlt;
+  const cardFrontImg = createCardItemImg(imgPath, imgAlt, 'card-front__pic-img');
 
   cardFrontImgContainer.append(cardFrontImg);
   cardFront.append(cardFrontImgContainer);
 
   // create card front title
-  const cardFrontTitle = createElement('h3');
-  cardFrontTitle.classList.add('card-front__title');
-  cardFrontTitle.classList.add('card-title');
-  cardFrontTitle.textContent = cardTitle;
+  const cardFrontTitle = createCardItemTitle(cardTitle, 'card-front__title');
+
   cardFront.append(cardFrontTitle);
 
   // create card front rotate button
-  const cardFrontRotateBtn = createElement('button');
-  cardFrontRotateBtn.classList.add('card-front__rotate');
-  cardFrontRotateBtn.classList.add('rotate-btn');
-  cardFrontRotateBtn.type = 'button';
-  cardFrontRotateBtn.textContent = 'rotate button';
+  const cardFrontRotateBtn = createCardRotateBtn('card-front__rotate', 'rotate button');
 
   cardFront.append(cardFrontRotateBtn);
 
@@ -58,21 +77,14 @@ const createCardItem = (imgPath, imgAlt, cardTitle, cardSection, cardTranslation
   cardBackImgContainer.classList.add('card-pic');
 
   // create card back image
-  const cardBackImg = createElement('img');
-  cardBackImg.classList.add('card-back__pic-img');
-  cardBackImg.classList.add('card-img');
-  cardBackImg.src = imgPath;
-  cardBackImg.alt = imgAlt;
+  const cardBackImg = createCardItemImg(imgPath, imgAlt, 'card-back__pic-img');
 
   cardBackImgContainer.append(cardBackImg);
 
   cardBack.append(cardBackImgContainer);
 
   // create card back title
-  const cardBackTitle = createElement('h3');
-  cardBackTitle.classList.add('card-back__title');
-  cardBackTitle.classList.add('card-title');
-  cardBackTitle.textContent = cardTranslation;
+  const cardBackTitle = createCardItemTitle(cardTranslation, 'card-back__title');
 
   cardBack.append(cardBackTitle);
 
