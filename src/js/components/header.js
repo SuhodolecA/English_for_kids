@@ -1,10 +1,10 @@
-import data from '../../assets/data/data.json';
 import { createElement } from '../utils/helper';
 import { createNavMenu } from './navMenu';
 import { createLogo } from './logo';
 import { createToggle } from './toggleBtn';
 import { createNavMenuBtn } from './navMenuBtn';
 import { createStatisticsBtn } from './statisticsBtn';
+import { GET_VAR } from '../utils/variables';
 
 const createHeader = () => {
   const headerElement = createElement('header');
@@ -34,7 +34,7 @@ const createHeader = () => {
   const navMenuBtn = createNavMenuBtn();
 
   // create nav menu
-  const navigationMenu = createNavMenu(data);
+  const navigationMenu = createNavMenu(GET_VAR('data'));
 
   headerNav.append(navMenuBtn);
   headerNav.append(navigationMenu);

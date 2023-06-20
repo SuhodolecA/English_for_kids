@@ -1,5 +1,4 @@
 import { createElement, createStartPageCardSet, hideStatTable } from '../utils/helper';
-import data from '../../assets/data/data.json';
 import { GET_VAR } from '../utils/variables';
 
 const createLogo = (logoText, logoHref) => {
@@ -19,7 +18,7 @@ const createLogo = (logoText, logoHref) => {
 
 const logoFunctionality = () => {
   hideStatTable();
-  createStartPageCardSet(data);
+  createStartPageCardSet(GET_VAR('data'));
 };
 
 const setLogoEventListener = () => {

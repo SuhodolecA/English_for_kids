@@ -1,5 +1,4 @@
 /* eslint-disable import/no-cycle */
-import data from '../../assets/data/data.json';
 import {
   createElement, createStartPageCardSet, createCardsListSection,
   hideStatTable,
@@ -11,6 +10,7 @@ const createNavMenu = (dataSet) => {
   // create nav ul
   const navMenuUl = createElement('ul');
   navMenuUl.classList.add('header-menu');
+  const data = GET_VAR('data');
 
   for (let i = 0; i < dataSet.length; i += 1) {
     navMenuUl.append(createNavMenuItem(data[i].section));
@@ -70,12 +70,12 @@ const hamburgerMenuFunctionality = (event) => {
   categoryName.textContent = section;
   hideStatTable();
   if (section === 'Home') {
-    createStartPageCardSet(data);
+    createStartPageCardSet(GET_VAR('data'));
     hamburgerBtn.click();
   } else if (section === undefined) {
     return;
   } else {
-    createCardsListSection(data, section);
+    createCardsListSection(GET_VAR('data'), section);
     hamburgerBtn.click();
   }
   updateNavMeunLinksState(categoryName.textContent);

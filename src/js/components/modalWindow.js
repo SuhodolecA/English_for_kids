@@ -1,5 +1,4 @@
 /* eslint-disable import/no-cycle */
-import data from '../../assets/data/data.json';
 import { createElement, isGameOverSuccess, createStartPageCardSet } from '../utils/helper';
 import { GET_VAR } from '../utils/variables';
 import { hideOverlay } from './overlay';
@@ -53,7 +52,7 @@ const hideModalWindow = () => {
   setTimeout(() => {
     modalWindow.classList.remove('appear');
     hideOverlay();
-    createStartPageCardSet(data);
+    createStartPageCardSet(GET_VAR('data'));
   }, 3000);
 };
 

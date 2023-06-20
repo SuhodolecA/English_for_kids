@@ -6,7 +6,6 @@ import {
   isGameOverSuccess, updateStatisticsPageData,
 } from '../utils/helper';
 import { GET_VAR } from '../utils/variables';
-import data from '../../assets/data/data.json';
 import { updateNavMeunLinksState } from './navMenu';
 import { showOverlay } from './overlay';
 import { createPlayRepeatBtn, playRepeatBtnFunctionality } from './playRepeatBtn';
@@ -52,7 +51,7 @@ const createMain = () => {
 
 const mainMenuFunctionality = (target) => {
   const { section } = target.closest('.card-list__item').dataset;
-  createCardsListSection(data, section);
+  createCardsListSection(GET_VAR('data'), section);
   updateNavMeunLinksState(section);
 };
 

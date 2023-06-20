@@ -1,4 +1,3 @@
-import data from '../../assets/data/data.json';
 import {
   createElement, createStatisticsTable, setGlobalValues,
   setStatisticsTableFunctionality, showStatTable,
@@ -36,7 +35,7 @@ const statisticsBtnFunctionality = () => {
       .slice(0, 8)
       .map((elem) => elem.Translation);
 
-    const repeatedDataSet = data
+    const repeatedDataSet = GET_VAR('data')
       .filter((item) => item.sectionWords)
       .map((elem) => elem.sectionWords)
       .flat()
