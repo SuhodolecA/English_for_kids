@@ -1,14 +1,14 @@
 /* eslint-disable import/no-cycle */
 import {
   createElement, createCardsListSection, isMainMenu, isCard, isTrainMode,
-  isPlayMode, trainModeFunctionality, isGameStarted,
+  isPlayMode, setTrainModeFunctionality, isGameStarted,
   isActiveCard, updateSoundList, addScoreIcon, playSound, isGameOver,
   isGameOverSuccess, updateStatisticsPageData,
 } from '../utils/helper';
 import { GET_VAR } from '../utils/variables';
 import { updateNavMeunLinksState } from './navMenu';
 import { showOverlay } from './overlay';
-import { createPlayRepeatBtn, playRepeatBtnFunctionality } from './playRepeatBtn';
+import { createPlayRepeatBtn, createPlayRepeatBtnFunctionality } from './playRepeatBtn';
 import { showModalWindow, hideModalWindow } from './modalWindow';
 
 const createMain = () => {
@@ -49,20 +49,20 @@ const createMain = () => {
   return mainElement;
 };
 
-const mainMenuFunctionality = (target) => {
+const setMainMenuFunctionality = (target) => {
   const { section } = target.closest('.card-list__item').dataset;
   createCardsListSection(GET_VAR('data'), section);
   updateNavMeunLinksState(section);
 };
 
-const mainSectionFunctionality = (event) => {
+const createMainSectionFunctionality = (event) => {
   const { target } = event;
   const cardsList = GET_VAR('cardsList');
   const cardInner = target.closest('.card-inner');
   if (isMainMenu(cardsList) && isCard(target)) {
-    mainMenuFunctionality(target);
+    setMainMenuFunctionality(target);
   } else if (!isMainMenu(cardsList) && isTrainMode(cardsList) && isCard(target)) {
-    trainModeFunctionality(target, cardInner);
+    setTrainModeFunctionality(target, cardInner);
   } else if (!isMainMenu(cardsList) && isPlayMode(cardsList) && isCard(target)
     && isGameStarted()) {
     const currentCard = target.closest('.card-list__item');
@@ -83,7 +83,7 @@ const mainSectionFunctionality = (event) => {
         addScoreIcon(currentCard, correctIconSrc);
         playSound(currentCard, correctAnswerSound);
         updateSoundList();
-        playRepeatBtnFunctionality(playRepeatBtn);
+        createPlayRepeatBtnFunctionality(playRepeatBtn);
         if (isGameOver()) {
           showOverlay();
           if (isGameOverSuccess()) {
@@ -106,10 +106,10 @@ const mainSectionFunctionality = (event) => {
 
 const setMainSectionFunctionality = () => {
   const cardsList = GET_VAR('cardsList');
-  cardsList.addEventListener('click', mainSectionFunctionality);
+  cardsList.addEventListener('click', createMainSectionFunctionality);
 };
 
 export {
-  createMain, mainMenuFunctionality, mainSectionFunctionality,
+  createMain, createMainSectionFunctionality,
   setMainSectionFunctionality,
 };

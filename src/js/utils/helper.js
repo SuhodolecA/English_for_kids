@@ -1,9 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { SET_VAR, GET_VAR } from './variables';
 import createCardItem from '../components/cardItem';
-import { resetPlayRepeatBtnState, playRepeatBtnFunctionality } from '../components/playRepeatBtn';
+import { resetPlayRepeatBtnState, createPlayRepeatBtnFunctionality } from '../components/playRepeatBtn';
 import createScoreLineIcon from '../components/scoreLineIcon';
-import { mainSectionFunctionality } from '../components/main';
+import { createMainSectionFunctionality } from '../components/main';
 
 // create element
 const createElement = (name) => {
@@ -55,7 +55,7 @@ const createNewSoundsList = () => {
   return soundsList;
 };
 
-const percentCorrectAnswers = (obj) => Math.round((
+const calculatePercentCorrectAnswers = (obj) => Math.round((
   obj.Correct / (obj.Correct + obj.Incorrect)) * 100);
 
 const createStartingStatisticData = (data) => {
@@ -288,7 +288,7 @@ const updateStatisticsPageData = (mode, card, result) => {
   }
   if (result) {
     currentItem.Correct += 1;
-    currentItem['Accuracy %'] = percentCorrectAnswers(currentItem);
+    currentItem['Accuracy %'] = calculatePercentCorrectAnswers(currentItem);
   } else {
     const cardListItems = Array.from(document.querySelectorAll('.card-list__item'));
     const currentSound = GET_VAR('soundsList').at(-1);
@@ -298,7 +298,7 @@ const updateStatisticsPageData = (mode, card, result) => {
         item.Translation === currentCard.querySelector('.card-back__title')
           .textContent));
     currentItem.Incorrect += 1;
-    currentItem['Accuracy %'] = percentCorrectAnswers(currentItem);
+    currentItem['Accuracy %'] = calculatePercentCorrectAnswers(currentItem);
   }
   const currentDataToJson = JSON.stringify(currentData);
   localStorage.setItem('statisticData', currentDataToJson);
@@ -390,14 +390,14 @@ const playSound = (element, soundPath) => {
   const playRepeatBtn = GET_VAR('playRepeatBtn');
   audio.play();
   if (element === playRepeatBtn) {
-    playRepeatBtn.removeEventListener('click', playRepeatBtnFunctionality);
+    playRepeatBtn.removeEventListener('click', createPlayRepeatBtnFunctionality);
     audio.addEventListener('ended', () => {
-      playRepeatBtn.addEventListener('click', playRepeatBtnFunctionality);
+      playRepeatBtn.addEventListener('click', createPlayRepeatBtnFunctionality);
     });
   } else {
-    cardsList.removeEventListener('click', mainSectionFunctionality);
+    cardsList.removeEventListener('click', createMainSectionFunctionality);
     audio.addEventListener('ended', () => {
-      cardsList.addEventListener('click', mainSectionFunctionality);
+      cardsList.addEventListener('click', createMainSectionFunctionality);
     });
   }
 };
@@ -414,7 +414,7 @@ const rotateBack = (element) => {
   }
 };
 
-const trainModeFunctionality = (target, cardInner) => {
+const setTrainModeFunctionality = (target, cardInner) => {
   if (target.classList.contains('rotate-btn')) {
     rotateCard(cardInner);
     cardInner.addEventListener('mouseleave', () => {
@@ -442,7 +442,7 @@ export {
   clearCardsListContainer, createStartPageCardSet,
   createCardsListSection, updateMode, playSound,
   rotateCard, rotateBack, isMainMenu, isCard, isTrainMode,
-  isPlayMode, trainModeFunctionality, shuffleArray, updateSoundList,
+  isPlayMode, setTrainModeFunctionality, shuffleArray, updateSoundList,
   isGameStarted, addScoreIcon, isActiveCard, isGameOver, isGameOverSuccess,
   createStatisticsTable, updateStatisticsPageData, setStatisticsTableFunctionality,
   createStatisticsTableBody, showStatTable, hideStatTable, createDiffWordsSection,

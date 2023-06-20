@@ -14,7 +14,7 @@ const createStatisticsBtn = () => {
   return statBtn;
 };
 
-const statisticsBtnFunctionality = () => {
+const setStatisticsBtnFunctionality = () => {
   const statBtn = document.querySelector('.statistics-button');
   statBtn.addEventListener('click', () => {
     setGlobalValues();
@@ -52,4 +52,4 @@ const statisticsBtnFunctionality = () => {
   });
 };
 
-export { createStatisticsBtn, statisticsBtnFunctionality };
+export { createStatisticsBtn, setStatisticsBtnFunctionality };

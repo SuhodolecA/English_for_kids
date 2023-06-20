@@ -62,7 +62,7 @@ const updateNavMeunLinksState = (category) => {
   setNavMenuActiveState(navMenuLinks, category);
 };
 
-const hamburgerMenuFunctionality = (event) => {
+const createHamburgerMenuFunctionality = (event) => {
   const { target } = event;
   const categoryName = GET_VAR('categoryName');
   const hamburgerBtn = GET_VAR('hamburgerBtn');
@@ -83,10 +83,10 @@ const hamburgerMenuFunctionality = (event) => {
 
 const setHamburgerMenuEventListener = () => {
   const headerMenu = GET_VAR('headerMenu');
-  headerMenu.addEventListener('click', hamburgerMenuFunctionality);
+  headerMenu.addEventListener('click', createHamburgerMenuFunctionality);
 };
 
 export {
-  createNavMenu, openNavMenu, closeNavMenu, hamburgerMenuFunctionality,
+  createNavMenu, openNavMenu, closeNavMenu, createHamburgerMenuFunctionality,
   setHamburgerMenuEventListener, updateNavMeunLinksState,
 };

@@ -11,7 +11,7 @@ const createPlayRepeatBtn = () => {
   return button;
 };
 
-const playRepeatBtnFunctionality = () => {
+const createPlayRepeatBtnFunctionality = () => {
   const playRepeatBtn = GET_VAR('playRepeatBtn');
   const soundsList = GET_VAR('soundsList');
   const currentSound = soundsList.at(-1);
@@ -31,10 +31,10 @@ const resetPlayRepeatBtnState = () => {
 
 const setPlayRepeatBtnFunctionality = () => {
   const playRepeatBtn = GET_VAR('playRepeatBtn');
-  playRepeatBtn.addEventListener('click', playRepeatBtnFunctionality);
+  playRepeatBtn.addEventListener('click', createPlayRepeatBtnFunctionality);
 };
 
 export {
   createPlayRepeatBtn, setPlayRepeatBtnFunctionality, resetPlayRepeatBtnState,
-  playRepeatBtnFunctionality,
+  createPlayRepeatBtnFunctionality,
 };

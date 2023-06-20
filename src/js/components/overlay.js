@@ -27,7 +27,7 @@ const showOverlay = () => {
   overlay.classList.add('fade-in');
 };
 
-const overlayFunctionality = () => {
+const setOverlayFunctionality = () => {
   const overlay = GET_VAR('overlay');
   const headerNav = GET_VAR('headerNav');
   overlay.addEventListener('click', () => {
@@ -39,5 +39,5 @@ const overlayFunctionality = () => {
 };
 
 export {
-  createOverlay, showOverlay, hideOverlay, overlayFunctionality,
+  createOverlay, showOverlay, hideOverlay, setOverlayFunctionality,
 };

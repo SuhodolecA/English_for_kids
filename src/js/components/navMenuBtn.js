@@ -20,7 +20,7 @@ const createNavMenuBtn = () => {
   return navMenuBtn;
 };
 
-const navMenuBtnFunctionality = () => {
+const setNavMenuBtnFunctionality = () => {
   const hamburgerBtn = GET_VAR('hamburgerBtn');
   const headerNav = GET_VAR('headerNav');
   hamburgerBtn.addEventListener('click', () => {
@@ -34,4 +34,4 @@ const navMenuBtnFunctionality = () => {
   });
 };
 
-export { createNavMenuBtn, navMenuBtnFunctionality };
+export { createNavMenuBtn, setNavMenuBtnFunctionality };

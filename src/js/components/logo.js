@@ -16,14 +16,14 @@ const createLogo = (logoText, logoHref) => {
   return headerLogo;
 };
 
-const logoFunctionality = () => {
+const setLogoFunctionality = () => {
   hideStatTable();
   createStartPageCardSet(GET_VAR('data'));
 };
 
 const setLogoEventListener = () => {
   const headerLogo = GET_VAR('headerLogo');
-  headerLogo.addEventListener('click', logoFunctionality);
+  headerLogo.addEventListener('click', setLogoFunctionality);
 };
 
 export { createLogo, setLogoEventListener };

@@ -26,7 +26,7 @@ const createToggle = () => {
   return toggleBtn;
 };
 
-const toggleBtnFunctionality = () => {
+const createToggleBtnFunctionality = () => {
   const toggleBtn = GET_VAR('toggleBtn');
   toggleBtn.ariaPressed = (toggleBtn.ariaPressed === 'false') ? 'true' : 'false';
   SET_VAR('isPlayMode', toggleBtn.ariaPressed);
@@ -35,7 +35,7 @@ const toggleBtnFunctionality = () => {
 
 const setToggleBtnFunctionality = () => {
   const toggleBtn = GET_VAR('toggleBtn');
-  toggleBtn.addEventListener('click', toggleBtnFunctionality);
+  toggleBtn.addEventListener('click', createToggleBtnFunctionality);
 };
 
-export { createToggle, toggleBtnFunctionality, setToggleBtnFunctionality };
+export { createToggle, setToggleBtnFunctionality };
