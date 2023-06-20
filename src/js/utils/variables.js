@@ -17,6 +17,7 @@ const VARIABLES = {
   modalWindow: 'initial value',
   modalWindowIcon: 'initial value',
   modalWindowText: 'initial value',
+  data: 'initial value',
   modalWindowIconWin: 'assets/images/score-icons/win-icon.png',
   modalWindowIconLose: 'assets/images/score-icons/lose-icon.png',
   statisticData: [],

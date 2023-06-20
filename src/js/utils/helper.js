@@ -4,7 +4,6 @@ import createCardItem from '../components/cardItem';
 import { resetPlayRepeatBtnState, playRepeatBtnFunctionality } from '../components/playRepeatBtn';
 import createScoreLineIcon from '../components/scoreLineIcon';
 import { mainSectionFunctionality } from '../components/main';
-import dataSet from '../../assets/data/data.json';
 
 // create element
 const createElement = (name) => {
@@ -115,7 +114,7 @@ const setGlobalValues = () => {
   SET_VAR('modalWindow', document.querySelector('.modal-window'));
   SET_VAR('modalWindowText', document.querySelector('.modal-window__text'));
   SET_VAR('modalWindowIcon', document.querySelector('.modal-window__icon'));
-  SET_VAR('statisticData', createStatisticsData(dataSet));
+  SET_VAR('statisticData', createStatisticsData(GET_VAR('data')));
   SET_VAR('isPlayMode', GET_VAR('toggleBtn').ariaPressed);
 };
 
