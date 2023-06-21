@@ -4,6 +4,8 @@ import createCardItem from '../components/cardItem';
 import { resetPlayRepeatBtnState, createPlayRepeatBtnFunctionality } from '../components/playRepeatBtn';
 import createScoreLineIcon from '../components/scoreLineIcon';
 import { createMainSectionFunctionality } from '../components/main';
+import { showOverlay } from '../components/overlay';
+import { showModalWindow, hideModalWindow } from '../components/modalWindow';
 
 // create element
 const createElement = (name) => {
@@ -22,6 +24,16 @@ const isGameOverSuccess = () => {
   const iconsAmount = document.querySelectorAll('.score-line__icon').length;
   const cardsAmount = document.querySelectorAll('.card-list__item').length;
   return iconsAmount === cardsAmount;
+};
+const getCurrentMode = (element, target) => {
+  if (!isMainMenu(element) && isTrainMode(element) && isCard(target)) {
+    return 'trainMode';
+  }
+  if (!isMainMenu(element) && isPlayMode(element) && isCard(target)
+    && isGameStarted()) {
+    return 'playMode';
+  }
+  return 'mainMode';
 };
 
 const clearCardsListContainer = () => {
@@ -55,7 +67,7 @@ const createNewSoundsList = () => {
   return soundsList;
 };
 
-const calculatePercentCorrectAnswers = (obj) => Math.round((
+const calculateercentCorrectAnswers = (obj) => Math.round((
   obj.Correct / (obj.Correct + obj.Incorrect)) * 100);
 
 const createStartingStatisticData = (data) => {
@@ -288,7 +300,7 @@ const updateStatisticsPageData = (mode, card, result) => {
   }
   if (result) {
     currentItem.Correct += 1;
-    currentItem['Accuracy %'] = calculatePercentCorrectAnswers(currentItem);
+    currentItem['Accuracy %'] = calculateercentCorrectAnswers(currentItem);
   } else {
     const cardListItems = Array.from(document.querySelectorAll('.card-list__item'));
     const currentSound = GET_VAR('soundsList').at(-1);
@@ -298,7 +310,7 @@ const updateStatisticsPageData = (mode, card, result) => {
         item.Translation === currentCard.querySelector('.card-back__title')
           .textContent));
     currentItem.Incorrect += 1;
-    currentItem['Accuracy %'] = calculatePercentCorrectAnswers(currentItem);
+    currentItem['Accuracy %'] = calculateercentCorrectAnswers(currentItem);
   }
   const currentDataToJson = JSON.stringify(currentData);
   localStorage.setItem('statisticData', currentDataToJson);
@@ -437,6 +449,45 @@ const addScoreIcon = (card, src) => {
   }
 };
 
+const setPlayModeFunctionality = (target) => {
+  const currentCard = target.closest('.card-list__item');
+  const currentCardFront = currentCard.querySelector('.card-front');
+  const currentCardSound = currentCard.dataset.sound;
+  const currentSound = GET_VAR('soundsList').at(-1);
+  const playRepeatBtn = GET_VAR('playRepeatBtn');
+  const correctAnswerSound = 'assets/audio/answers-sound/correct-choice.mp3';
+  const successSound = 'assets/audio/answers-sound/success.mp3';
+  const correctIconSrc = 'assets/images/score-icons/correct.png';
+  const wrongIconSrc = 'assets/images/score-icons/wrong.png';
+  const wrongAnswerSound = 'assets/audio/answers-sound/negative_beeps.mp3';
+  const failureSound = 'assets/audio/answers-sound/failure.mp3';
+  if (isActiveCard(currentCardFront) && !playRepeatBtn.classList.contains('playing')) {
+    updateStatisticsPageData('play', currentCard, currentCardSound === currentSound);
+    if (currentCardSound === currentSound) {
+      currentCardFront.classList.add('inactive');
+      addScoreIcon(currentCard, correctIconSrc);
+      playSound(currentCard, correctAnswerSound);
+      updateSoundList();
+      createPlayRepeatBtnFunctionality(playRepeatBtn);
+      if (isGameOver()) {
+        showOverlay();
+        if (isGameOverSuccess()) {
+          playSound(currentCard, successSound);
+          showModalWindow();
+          hideModalWindow();
+        } else {
+          playSound(currentCard, failureSound);
+          showModalWindow();
+          hideModalWindow();
+        }
+      }
+    } else {
+      addScoreIcon(currentCard, wrongIconSrc);
+      playSound(currentCard, wrongAnswerSound);
+    }
+  }
+};
+
 export {
   createElement, setGlobalValues, capitalizeFirstWord,
   clearCardsListContainer, createStartPageCardSet,
@@ -446,4 +497,5 @@ export {
   isGameStarted, addScoreIcon, isActiveCard, isGameOver, isGameOverSuccess,
   createStatisticsTable, updateStatisticsPageData, setStatisticsTableFunctionality,
   createStatisticsTableBody, showStatTable, hideStatTable, createDiffWordsSection,
+  getCurrentMode, setPlayModeFunctionality,
 };
