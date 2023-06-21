@@ -1,0 +1,20 @@
+//  slide out animation for navigation menu
+@keyframes slide-out {
+  from {
+    left: -3.125rem;
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0.5;
+  }
+
+  to {
+    left: -20.625rem;
+    opacity: 0;
+  }
+}
+
+.slide-out {
+  animation: slide-out 0.5s ease-in-out forwards;
+}

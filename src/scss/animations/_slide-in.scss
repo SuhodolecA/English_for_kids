@@ -1,0 +1,24 @@
+//  slide in animation for navigation menu
+@keyframes slide-in {
+  from {
+    left: -20.625rem;
+    opacity: 0;
+  }
+
+  10% {
+    left: -18.75rem;
+  }
+
+  80% {
+    opacity: 0.3;
+  }
+
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slide-in 0.5s ease-in-out forwards;
+}

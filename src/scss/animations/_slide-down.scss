@@ -1,0 +1,24 @@
+//  slide in animation for navigation menu
+@keyframes slide-down {
+  from {
+    height: 0;
+    overflow: hidden;
+  }
+
+  10% {
+    height: 10%;
+  }
+
+  80% {
+    height: 80%;
+  }
+
+  to {
+    height: 100%;
+     overflow-y: scroll;
+  }
+}
+
+.slide-down {
+  animation: slide-down 0.5s ease-in-out forwards;
+}

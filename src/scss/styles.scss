@@ -1,0 +1,11 @@
+@import 'base/reset';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'base/globals';
+
+@import 'components/overlay';
+@import 'components/modalWindow';
+@import 'layout/header';
+@import 'layout/main';
+@import 'layout/statisticPage';
+@import 'layout/footer';

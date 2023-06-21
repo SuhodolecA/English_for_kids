@@ -1,0 +1,54 @@
+@import '../components/statisticTable';
+@import '../animations/slide-down';
+@import '../animations/slide-up';
+
+.statistics-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 0;
+    transition: all 1.3s ease-in-out;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5em;
+        margin-bottom: 0.5em;
+        &-btn {
+            position: relative;
+            border: 0;
+            background-color: $turquoiseColor;
+            padding: 0.5em 0.7em;
+            border-radius: 0.3em;
+            font-family: 'Chango', cursive;
+            font-size: 0.65em;
+            color: $shadePurpleColor;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+
+
+              @media (min-width: 40rem) {
+                font-size: 0.8em;
+            }
+
+            &:disabled {
+              background-color: $inActiveColor;
+              cursor: not-allowed;
+
+            &:hover, &:focus {
+                color: $shadePurpleColor;
+            }
+            }
+
+            &:hover, &:focus {
+                color: $whiteColor;
+            }
+        }
+    }
+}

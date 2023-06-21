@@ -1,0 +1,93 @@
+@import '../animations/slide-out';
+@import '../animations/slide-in';
+
+
+.header-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  left: -20.625rem;
+  z-index: 10;
+  min-width: 20rem;
+  min-height: 100vh;
+  padding-top: 6em;
+  padding-left: 2.8125em;
+  background: linear-gradient(40deg, hsl(44, 100%, 72%), hsl(0, 96%, 69%));
+  box-shadow: 0.1875em 0 0.625em hsla(0, 0%, 0%, 0.5), inset 0.1875em 0 1.25em hsla(0, 0%, 0%, 0.5);
+  transition: all 0.4s ease-in-out;
+
+  &__item:not(:last-child) {
+    margin-bottom: 1.75em;
+  }
+
+  &__item-link {
+    font-size: 1.4em;
+    line-height: 0.6em;
+    padding-left: 2em;
+    color: transparent;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    -webkit-text-stroke: 1px hsla(0, 0%, 100%, 0.8);
+
+    &.active::before {
+      width: 100%;
+      -webkit-text-stroke: 1px $whiteColor;
+      filter: drop-shadow(0 0 25px $whiteColor);
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+        -webkit-text-stroke: 1px $whiteColor;
+        filter: drop-shadow(0 0 25px $whiteColor);
+      }
+    }
+
+    &::before {
+      content: attr(data-section);
+      position: absolute;
+      color: $whiteColor;
+      width: 0%;
+      overflow: hidden;
+      transition: width 0.3s ease-in-out;
+      -webkit-text-stroke: 1px $whiteColor;
+    }
+
+    &::after {
+      @include insert-icons('../assets/images/header-menu-icons/home.png');
+    }
+
+    &[data-section='Clothes']::after {
+      @include insert-icons('../assets/images/header-menu-icons/clothes.png');
+    }
+
+    &[data-section='Food']::after {
+      @include insert-icons('../assets/images/header-menu-icons/food.png');
+    }
+
+    &[data-section='Colours']::after {
+      @include insert-icons('../assets/images/header-menu-icons/colours.png');
+    }
+
+    &[data-section='Fruits']::after {
+      @include insert-icons('../assets/images/header-menu-icons/fruits.png');
+    }
+
+    &[data-section='Pets']::after {
+      @include insert-icons('../assets/images/header-menu-icons/pets.png');
+    }
+
+    &[data-section='School']::after {
+      @include insert-icons('../assets/images/header-menu-icons/school.png');
+    }
+
+    &[data-section='Sport']::after {
+      @include insert-icons('../assets/images/header-menu-icons/sports.png');
+    }
+
+    &[data-section='Family']::after {
+      @include insert-icons('../assets/images/header-menu-icons/family.png');
+    }
+  }
+}

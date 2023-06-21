@@ -1,0 +1,74 @@
+@import '../components/cardItem';
+@import '../components/playRepeatBtn';
+@import './statisticPage';
+@import '../animations/appear';
+@import '../animations/disappear';
+
+
+.main {
+    overflow: hidden;
+    position: relative;
+    flex-grow: 1;
+    min-height: 47em;
+
+    .score-line {
+        min-height: 3.125em;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        overflow: hidden;
+
+        &__icon {
+            vertical-align: middle;
+        }
+    }
+    .category-name {
+        font-size: 1.7em;
+        text-align: center;
+        margin-bottom: .5em;
+        color: $whiteColor;
+    }
+
+    .cards-list {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 0.625em;
+        row-gap: 1.875em;
+        justify-content: space-around;
+        padding: 0.625em;
+        margin-bottom: .5em;
+
+
+        &.start-page {
+            .card-front__rotate {
+                visibility: hidden;
+            }
+        }
+
+        &.start-page[data-mode="play"]{
+        .card-inner {
+            box-shadow: 0 0 1em 0.5em rgba(219, 219, 7, 0.6);
+        }
+     }
+
+     &[data-category]:not([data-category="main-menu"])[data-mode="play"] {
+        .card-front__title {
+            position: relative;
+            padding: 0;
+            background-color: $whiteColor;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .rotate-btn {
+            display: none;
+        }
+
+        & ~ .play-btn {
+            bottom: 1.25rem;
+            display: block;
+        }
+     }
+    }
+}
+

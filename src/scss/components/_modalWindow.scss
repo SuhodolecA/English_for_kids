@@ -1,0 +1,26 @@
+@import '../animations/appear';
+
+.modal-window {
+    max-width: 35em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+    text-align: center;
+
+    &__icon {
+        width: 80%;
+        vertical-align: middle;
+    }
+
+    &__text,
+    h3 {
+        font-size: 2.5em;
+        color: $whiteColor;
+        text-align: center;
+        padding: 0.2em;
+    }
+}

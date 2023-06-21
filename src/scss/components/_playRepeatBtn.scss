@@ -1,0 +1,49 @@
+.play-btn {
+    position: relative;
+    font-size: 0.01rem;
+    border: 0;
+    border-radius: 50%;
+    width: 3.75rem;
+    height: 3.75rem;
+    bottom: -10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    box-shadow: 0 0 1.25em hsla(0, 0%, 0%, .5);
+    transition: all .3s ease-in-out;
+    display: none;
+
+    &.repeat {
+        &::before {
+            opacity: 0;
+        }
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &::before {
+        content: '';
+        background-image: url('../assets/images/btns-icons/play.png');
+        background-position: 50% 50%;
+        width: 3.125rem;
+        height: 3.125rem;
+        position: absolute;
+        top: 53%;
+        left: 54%;
+        transform: translate(-53%, -54%);
+    }
+
+    &::after {
+        content: '';
+        background-image: url('../assets/images/btns-icons/replay.png');
+        background-position: 50% 50%;
+        width: 3.125rem;
+        height: 3.125rem;
+        position: absolute;
+        top: 53%;
+        left: 54%;
+        transform: translate(-53%, -54%);
+        opacity: 0;
+    }
+}

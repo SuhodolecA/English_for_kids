@@ -1,0 +1,94 @@
+.card {
+    max-width: 16.875em;
+    width: 100%;
+    height: 18.125em;
+    padding: 0.9375em;
+    perspective: 62.5em;
+    cursor: pointer;
+
+    &-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        border-radius: 1em;
+        transition: all .6s ease-in-out;
+        box-shadow: 0 0 1em 0 hsla(0, 0%, 0%, .5);
+        transform-style: preserve-3d;
+
+
+        &:hover {
+            box-shadow: 0 0 1em 0 hsla(0, 0%, 100%, .5);
+        }
+    }
+
+     &-pic {
+        .card-img {
+            width: 100%;
+            vertical-align: middle;
+        }
+    }
+
+    &-front,
+    &-back {
+        position: absolute;
+        border-radius: 1em;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-front {
+        background-color: hsl(0, 0%, 73%);
+        color: hsl(0, 0%, 0%);
+
+        .card-front__rotate {
+             position: absolute;
+             right: 0;
+             bottom: 0;
+             width: 35px;
+             height: 35px;
+             font-size: 0;
+             border: 0;
+             background: $turquoiseColor url('../assets/images/btns-icons/rotate.svg') center center no-repeat;
+             background-size: 65%;
+             border-top-left-radius: 1rem;
+             cursor: pointer;
+        }
+
+        &.inactive {
+            background-color: hsl(0, 1%, 45%);
+            cursor: initial;
+
+            img {
+                filter: grayscale(1);
+            }
+        }
+    }
+
+    &-back {
+        background-color: hsl(210, 100%, 56%);
+        color: $whiteColor;
+        transform: rotateY(180deg);
+
+        .rotate-btn {
+            display: none;
+        }
+    }
+
+
+    &-title {
+        font-family: 'Chango', cursive;
+        font-size: 1.05em;
+        font-weight: 400;
+        color: $shadePurpleColor;
+        margin-top: auto;
+        padding: 0.875rem 0;
+        background-color: $whiteColor;
+        transition: all .3s ease-in-out;
+    }
+}
